@@ -1,0 +1,23 @@
+<html data-theme="light">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/a11y-light.min.css">
+  </head>
+  <body>
+    <pre><code class="javascript">const x = 1;</code></pre>
+    <button onclick="changeTheme()">Change theme</button>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/build/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+      function changeTheme() {
+        const html = document.querySelector('html');
+        if (html.dataset.theme === 'light') {
+          html.dataset.theme = 'dark';
+          document.querySelector('link[href*="a11y-light"]').href = 'https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/a11y-dark.min.css';
+        } else {
+          html.dataset.theme = 'light';
+          document.querySelector('link[href*="a11y-dark"]').href = 'https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/a11y-light.min.css';
+        }
+      }
+    </script>
+  </body>
+</html>

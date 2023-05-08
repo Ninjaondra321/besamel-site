@@ -1,0 +1,900 @@
+:root {
+    --background: #f3ef1a38;
+    --primary-color: #9d22df;
+    --secondary-color: #f3ef1a;
+
+    --font-color-light: #f7fcf1;
+    --font-color-dark: #1e1d3a;
+
+    --font-color: var(--font-color-dark);
+
+    --bg-light: #f7fcf1;
+    --bg-dark: #1e1d3a;
+
+}
+
+body {
+    background: var(--background);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* * 0 GENERAL */
+a {
+    color: var(--primary-color);
+}
+
+/* * 1 TYPOGRAPHY */
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: calc(1rem * var(--font-multiplier));
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--font-color-dark)
+}
+
+.light {
+    color: var(--font-color-light);
+}
+
+.dark {
+    color: var(--font-color-dark);
+}
+
+/* * 2 COMPONENTS */
+/* * 2.0 NAVBAR */
+.navbar {
+    background: linear-gradient(180deg, rgb(157, 34, 223) 0%, rgba(157, 34, 223, 0.726) 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+    color: var(--secondary-color);
+}
+
+.navbar a:hover {
+    border-bottom: #f3ef1a 2px solid;
+}
+
+.navbar .active {
+    color: var(--primary-color);
+    border-bottom: #f3ef1a 2px solid;
+}
+
+
+/* * 2.1 BUTTONS */
+button,
+select {
+    color: var(--font-color-light);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 3.5px 5px;
+    /* font-size: 1.2rem; */
+    font-weight: 600;
+    cursor: pointer;
+    background-color: unset;
+    transition: all 0.2s ease-in-out;
+
+    background: var(--primary-color);
+}
+
+select:focus,
+select:focus-visible {
+    outline: 1.3px solid var(--primary-color);
+}
+
+button:not(.icon-btn).large,
+select.large {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+}
+
+
+button.primary,
+select.primary {
+    background: var(--primary-color);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+button.primary:hover {
+    background: #4d0d5f;
+
+}
+
+button.secondary,
+select.secondary {
+    /* background: rgba(135, 135, 135, 0.262); */
+    color: var(--primary-color);
+    /* color: black; */
+    background: #9d22df2d;
+
+
+
+    /* border: var(--primary-color) 1px solid; */
+}
+
+button.secondary:hover,
+select.secondary:hover {
+    outline: var(--primary-color) 1px solid;
+
+}
+
+button.terciary,
+select.terciary {
+    color: var(--primary-color);
+    background: none;
+    /* text-decoration: underline 1.3px; */
+    border: var(--primary-color) 1px solid;
+}
+
+button.terciary:hover,
+select.terciary:hover {
+    background: #9d22df2d;
+
+}
+
+button.plain,
+.icon-btn {
+    background: none;
+    color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* * 2.2 ACCORDION */
+
+.accordion-nice .accordion-item {
+    margin: 5px;
+    border: solid 1px var(--primary-color);
+    border-radius: 8px;
+}
+
+.accordion-nice .accordion-header {
+    background: var(--primary-color) !important;
+    color: var(--font-color-light);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin: 0px;
+}
+
+
+/* * INPUTS */
+input,
+textarea {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 10px;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: -1px 2px 8px 0rem rgba(157, 34, 223, 0.25);
+}
+
+input.large {
+    padding: 12px 12px;
+    font-size: 1.2rem;
+}
+
+.iconned-input {
+    position: relative;
+}
+
+.iconned-input .icon,
+.iconned-input .g-icon {
+    position: absolute;
+    color: var(--primary-color);
+    height: 100%;
+    font-size: 100%;
+    pointer-events: none;
+    margin: 9px;
+}
+
+.iconned-input .g-icon.large {
+    font-size: 1.4rem;
+}
+
+.iconned-input input {
+    padding-left: 30px;
+}
+
+
+
+/* * TILES */
+
+.tile {
+    border-radius: 50px;
+    padding: 20px;
+
+    /* TODO: asi vymaž? */
+    /* margin: 15px; */
+}
+
+.tile.primary {
+    background: var(--primary-color);
+    color: var(--font-color-light);
+    box-shadow: 1px 6px 17px 0.2rem rgba(157, 34, 223, 0.40);
+
+}
+
+.tile.secondary {
+    color: var(--primary-color);
+    background: #9d22df2d;
+    outline: var(--primary-color) 1px solid;
+}
+
+.tile.terciary {
+    color: var(--primary-color);
+    background: none;
+    /* text-decoration: underline 1.3px; */
+    border: var(--primary-color) 1px solid;
+}
+
+
+
+/* * THEMES */
+.dark {
+    color: var(--font-color-light);
+}
+
+.light {
+    color: var(--font-color-dark);
+}
+
+.dark .inverted-theme {
+    color: var(--font-color-light);
+}
+
+.light .inverted-theme {
+    color: var(--font-color-dark);
+}
+
+
+/* *3 FOOTERS */
+footer {
+    background: var(--primary-color);
+    color: var(--font-color-light);
+    padding: 20px;
+    padding-bottom: 0;
+    margin-bottom: -10px;
+}
+
+
+footer.boruvka {
+    background-color: #1e1d3a;
+}
+
+footer.boruvka a {
+    color: var(--secondary-color);
+    padding: 0 3vw;
+}
+
+footer.boruvka .last-line * {
+    color: rgba(255, 255, 255, 0.692) !important;
+    padding: 0 2px;
+    font-size: 0.8rem;
+}
+
+footer.malina li {
+    /* Remove the bullet  */
+    list-style: none;
+
+}
+
+
+
+/* ? IDK */
+::selection {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+
+/* ! VYMAZZZZZ */
+
+
+input[type="checkbox"],
+input[type="radio"] {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+#inputPreview {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+input[type="checkbox"]+label,
+input[type="radio"]+label {
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+input[type="checkbox"]+label::before,
+input[type="radio"]+label::before {
+    content: "";
+    margin-right: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+input[type="radio"]+label::before {
+    border-radius: 50%;
+}
+
+
+input[type="checkbox"]:checked+label::after {
+    font-family: "Material Icons";
+    content: "done";
+
+    font-size: 25px;
+    color: var(--font-color-light);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0px;
+    left: 0px;
+    /* top: 0px; */
+    top: calc(50%-10px);
+
+
+    height: 22px;
+    width: 22px;
+
+    animation: check 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes check {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+input[type="radio"]:checked+label::after {
+    content: "";
+
+    background-color: var(--font-color-light);
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    left: 5.5px;
+    top: calc(50%-5px);
+}
+
+input[type="checkbox"]:disabled+label,
+input[type="radio"]:disabled+label {
+    filter: grayscale(100%) brightness(2);
+    cursor: default;
+}
+
+
+/* * TABLES */
+
+table {
+    margin: 5px;
+    border-collapse: collapse;
+}
+
+table td,
+table th {
+    padding: 1.8px 10px;
+    text-align: center;
+}
+
+/* ! Pak vymaz: */
+/* td,
+th {
+    outline: red 1px solid;
+} */
+
+table.primary th {
+    background-color: var(--primary-color);
+    padding: 15px;
+    color: var(--font-color-light);
+}
+
+
+table.primary td {
+    background-color: var(--primary-color-light);
+
+
+}
+
+
+table.primary thead th:first-child {
+    border-radius: 15px 0px 0px 15px;
+}
+
+table.primary thead th:last-child {
+    border-radius: 0px 15px 15px 0px;
+}
+
+
+table.plain th {
+    color: var(--primary-color);
+    border-bottom: rgb(194, 194, 194) 1px solid;
+    padding-bottom: 0px;
+}
+
+
+
+
+
+/* * LEADER */
+/* .leader {
+    width: 100%;
+    margin: 0 10px;
+    height: fit-content;
+    display: hidden;
+    border-bottom: gray 2.5px dotted;
+} */
+
+span.leader {
+    width: 100%;
+    margin: 0 7px;
+    border-bottom: gray 2.5px dotted;
+    margin-bottom: 6px;
+    height: auto;
+}
+
+
+
+
+.card {
+    /* TODO: Tohle předělej */
+    background-color: var(--font-color-light);
+    /* Small gray shadow */
+    box-shadow: 0px 3px 5px 0.5px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    margin: 15px;
+
+    border-radius: 10px;
+
+    transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0px 8px 10px 1px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+.card.primary:hover,
+.card.secondary:hover,
+.card.terciary:hover {
+    box-shadow: 0px 8px 10px 1px rgba(157, 34, 223, 0.4);
+    transform: translateY(-5px);
+}
+
+.card.primary {
+    background-color: var(--primary-color);
+    color: var(--font-color-light);
+    box-shadow: 0px 3px 5px 0.5px rgba(157, 34, 223, 0.2);
+
+}
+
+.card.secondary {
+    background-color: #9d22df2d;
+    box-shadow: 0px 3px 5px 0.5px rgba(157, 34, 223, 0.2);
+    border: 1px solid #9d22df2d;
+    color: var(--primary-color);
+}
+
+.card.terciary {
+    border: 1px solid #9d22df2d;
+    color: var(--primary-color);
+}
+
+/* Carousel */
+
+.carousel {
+    display: flex;
+
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 5px;
+    scroll-behavior: smooth;
+
+    height: 100% !important;
+
+
+}
+
+.carousel.fade-edge {
+    --mask: linear-gradient(to right,
+            rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 1) 3%,
+            rgba(0, 0, 0, 1) 97%, rgba(0, 0, 0, 0) 100%) 100% 50% / 100% 100%;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+
+    /* --mask: linear-gradient(to bottom,
+            rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 40%,
+            rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0) 0) 100% 50% / 100% 100% repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask); */
+}
+
+.carousel>* {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+/* .carousel img {
+    padding: 5px;
+
+height: 100%;
+width: auto;
+}
+
+*/
+
+/* Style scroll */
+.carousel::-webkit-scrollbar {
+    background-color: none;
+    height: 10px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background-color: rgba(157, 34, 223, 0.4);
+    border-radius: 10px;
+}
+
+.carousel::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(157, 34, 223, 1);
+}
+
+
+.carousel-control-l,
+.carousel-control-r {
+    /* position: absolute; */
+    top: 50%;
+
+    font-family: "Material Icons";
+
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+
+    /* shadow - primary */
+    box-shadow: 0px 3px 5px 0.5px rgba(157, 34, 223, 0.2);
+    opacity: 0.3;
+}
+
+.carousel-parent .left-control,
+.carousel-parent .right-control {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+}
+
+.carousel-parent .left-control {
+    left: 0px;
+    padding-right: 15px;
+}
+
+.carousel-parent .right-control {
+    right: 0px;
+    padding-left: 15px;
+}
+
+
+.carousel-parent .left-control:hover .carousel-control-l,
+.carousel-parent .right-control:hover .carousel-control-r {
+    opacity: 1;
+    /* shadow - primary-hover */
+    box-shadow: 0px 8px 10px 1px rgba(157, 34, 223, 0.4);
+}
+
+
+
+
+.carousel img,
+img {
+    pointer-events: none;
+    user-select: none;
+}
+
+
+/* * Practical things */
+.shadow {
+    box-shadow: 0px 3px 5px 0.5px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-primary {
+    box-shadow: 0px 3px 5px 0.5px rgba(157, 34, 223, 0.2);
+}
+
+.shadow-hover:hover {
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0px 8px 10px 1px rgba(0, 0, 0, 0.4);
+}
+
+.shadow-primary-hover:hover {
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0px 8px 10px 1px rgba(157, 34, 223, 0.4);
+}
+
+
+
+/* * BADGES */
+.badge {
+    font-size: 40%;
+    /* background-color: var(--primary-color);
+    color: var(--font-color-light); */
+    padding: 3px;
+    border-radius: 55px;
+    display: inline-flex;
+    vertical-align: text-top;
+    width: fit-content;
+}
+
+.badge.primary {
+    background-color: var(--primary-color);
+    color: var(--font-color-light);
+}
+
+.badge.secondary {
+    background-color: #9d22df2d;
+    color: var(--primary-color);
+    /* border: 1px solid #9d22df2d; */
+}
+
+.badge.terciary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+/* * TABS */
+.tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+}
+
+.tab {
+    /* Same as secondary button */
+    background-color: #9d22df2d;
+    color: var(--primary-color);
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 5px;
+
+    cursor: pointer;
+}
+
+
+.tab.active {
+    background-color: var(--primary-color);
+    color: var(--font-color-light);
+
+    /* shadow - primary */
+    box-shadow: 0px 3px 5px 0.5px rgba(157, 34, 223, 0.2);
+}
+
+/* * Chips */
+.chip {
+    /* Seconadry */
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    display: flex;
+}
+
+.chip.primary {
+    background-color: #9d22df2d;
+    color: var(--primary-color);
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+
+input:checked+.chip.primary {
+    background-color: var(--primary-color);
+    color: var(--font-color-light);
+}
+
+input:checked+.chip {
+    background-color: #9d22df2d;
+    color: var(--primary-color);
+}
+
+
+/* Remove default from  */
+.chip::before,
+.chip::after {
+    display: none !important;
+}
+
+input:checked+.chip.with-close::after {
+    display: block !important;
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 0;
+    content: "close";
+    font-family: "Material Icons";
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* * MODAL */
+.modal-parent {
+
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.45);
+
+
+    animation: modalBG 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+}
+
+.modal {
+    background-color: var(--font-color-light);
+    border-radius: 5px;
+
+    max-width: 400px;
+    padding: 20px;
+
+    z-index: 999;
+
+    animation: riseUp 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* 
+button.modal-bacground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: none;
+
+cursor: pointer;
+}
+
+*/
+
+/* ANimation */
+@keyframes modalBG {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    90% {
+        background-color: rgba(0, 0, 0, 0.45);
+    }
+}
+
+@keyframes riseUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+
+.modal-parent button.invisible {
+    background-color: transparent;
+    border: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: default;
+
+    z-index: 98;
+}
+
+/* Text loading animation */
+.loading {
+    color: transparent;
+    background: linear-gradient(125deg, #9d22df, #9d22df00, #9d22df);
+    background-size: 400% 400%;
+    animation: text-loading 1s infinite;
+
+    height: auto;
+    width: auto;
+
+    border-radius: 5px;
+
+    /* Disable ::select */
+    user-select: none;
+}
+
+@keyframes text-loading {
+    0% {
+        background-position: 100%;
+    }
+
+    100% {
+        background-position: 0%;
+    }
+}
+
+
+/* 
+    Podminka pro maximux Delta l lba bla bal
+
+    -- dopsat od honzy!!!!
+*/
+
+
+/* !Predelej! */
+nav .nav-drawer {
+    z-index: 3;
+}
