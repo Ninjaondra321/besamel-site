@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { createSignal, createEffect } from "solid-js";
 import { A } from "@solidjs/router";
 const dictionary = {
     "home": {
@@ -46,6 +46,11 @@ function NavBar({ language, setLanguage, languages }) {
         }
 
     }
+
+
+    createEffect(() => {
+        updateHeight(showBanner());
+    });
 
 
     return (<>

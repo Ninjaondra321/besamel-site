@@ -14,9 +14,13 @@
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
     "@solidjs/meta": "^0.28.3",
     "@solidjs/router": "^0.8.2",
     "prismjs": "^1.29.0",
-    "solid-js": "^1.6.10"
+    "remark-gfm": "^3.0.1",
+    "solid-js": "^1.6.10",
+    "solid-jsx": "^0.9.1"
   }
 }
