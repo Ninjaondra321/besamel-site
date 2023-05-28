@@ -46,7 +46,7 @@ function App() {
 
   const [analyticalCookiesAllowed, setAnalyticalCookiesAllowed] = createSignal(false);
 
-  const [language, setLanguage] = createSignal("en");
+  const [language, setLanguage] = createSignal("cs");
 
 
 
@@ -80,6 +80,7 @@ function App() {
           <Routes >
             <Route path="/" element={<HomePage language={language} />} />
             <Route path="/docs" element={<Docs language={language} />} />
+            <Route path="/docs/*" element={<Docs language={language} />} />
             <Route path="/examples" element={<Examples language={language} />} />
             <Route path="/theme-creator" element={<ThemeCreator language={language} />} />
 
