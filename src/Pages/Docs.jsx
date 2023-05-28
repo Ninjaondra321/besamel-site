@@ -1,12 +1,7 @@
 import { useLocation } from "@solidjs/router";
-import { createResource, onMount } from "solid-js";
-import { compile } from '@mdx-js/mdx'
+import { createEffect, createResource, onMount } from "solid-js";
 
-
-import { MDXProvider } from '@mdx-js/react';
-
-import { render } from "solid-js/web";
-
+import { createSignal } from "solid-js";
 
 import { A } from "@solidjs/router";
 
@@ -19,40 +14,40 @@ const fetchSidebar = async (language) => {
 
     const testFetchResult = [
         {
-            "title": "Introduction",
+            "innerHTML": "Introduction",
             "link": "/docs/introduction",
             "children": [
                 {
-                    "title": "Sample link",
+                    "innerHTML": "Sample link",
                     "link": "/docs/introduction/sample-link",
                 },
                 {
-                    "title": "Sample link 2",
+                    "innerHTML": "Sample link 2",
                     "link": "/docs/introduction/sample-link-2",
                 }]
         },
         {
-            "title": "Components",
+            "innerHTML": "Components",
             "link": "/docs/components",
             "children": [
                 {
-                    "title": "Accordeon",
+                    "innerHTML": "Accordeon",
                     "link": "/docs/components/accordeon",
                 },
                 {
-                    "title": "Badge",
+                    "innerHTML": "Badge",
                     "link": "/docs/components/badge",
                 },
                 {
-                    "title": "Buttons",
+                    "innerHTML": "Buttons",
                     "link": "/docs/components/buttons",
                 },
                 {
-                    "title": "Cards",
+                    "innerHTML": "Cards",
                     "link": "/docs/components/cards",
                 },
                 {
-                    "title": "Carousels",
+                    "innerHTML": "Carousels",
                     "link": "/docs/components/carousels",
                 },
             ]
@@ -88,54 +83,71 @@ const fetchPage = async (language, location) => {
         "page": [
             {
                 "type": "h1",
-                "innerHtml": "Introduction <span class='badge primary'>New</span>",
+                "innerHTML": "Introduction <span class='badge primary'>New</span>",
             },
             {
                 "type": "p",
-                "innerHtml": "Lorem ipsum dolor, sit <span class='badge primary'>New</span> amet consectetur adipisicing elit. Nam porro quas officia consectetur maiores, ipsam totam minus? Mollitia libero harum esse nam! Vel nesciunt delectus blanditiis ut explicabo veritatis fuga?"
+                "innerHTML": "Lorem ipsum dolor, sit <span class='badge primary'>New</span> amet consectetur adipisicing elit. Nam porro quas officia consectetur maiores, ipsam totam minus? Mollitia libero harum esse nam! Vel nesciunt delectus blanditiis ut explicabo veritatis fuga?"
             },
             {
                 "type": "h2",
-                "innerHtml": "Sample"
+                "innerHTML": "Sample"
             },
             {
                 "type": "iframe",
-                "innerHtml": "<h1>Sample heading</h1> <p>Sample text</p>",
+                "innerHTML": "<h1>Sample heading</h1> <p>Sample text</p>",
             }
         ]
     }
-
-    let sidebar = [
-        {
-            "innerHtml": "Introduction",
-            "id": "introduction",
-            "children": [
-                {
-                    "innerHtml": "Sample link",
-                    "id": "sample-link",
-                },
-                {
-                    "innerHtml": "Sample link 2",
-                    "id": "sample-link-2",
-                }
-            ]
-        },
-        {
-            "innerHtml": "Components",
-            "id": "components",
-            "children": []
-        },
-
-    ]
-
     let counter = 0;
 
+
     for (let i = 0; i < testFetchResult.page.length; i++) {
+
         testFetchResult.page[i].id = "docs-" + counter + "-id";
         counter++;
+
     }
 
+    // TODO!! Tohle vymaz
+    // Make the page tripple as long
+
+    for (let i = 0; i < 15; i++) {
+
+        testFetchResult.page.push(testFetchResult.page[i])
+
+    }
+
+
+
     return testFetchResult;
+}
+
+function createRightSidebar(pageJSON) {
+    let rightSidebar = []
+
+    for (let i = 0; i < pageJSON.page.length; i++) {
+
+        if (pageJSON.page[i].type === "h1") {
+            rightSidebar.push({
+                "innerHTML": pageJSON.page[i].innerHTML,
+                "link": pageJSON.page[i].id,
+                "children": []
+            })
+        }
+        else if (pageJSON.page[i].type === "h2") {
+
+            rightSidebar[rightSidebar.length - 1].children.push({
+                "innerHTML": pageJSON.page[i].innerHTML,
+                "link": pageJSON.page[i].id,
+            })
+        }
+
+
+    }
+
+    console.log(rightSidebar)
+    return rightSidebar;
 }
 
 function Docs({ language }) {
@@ -146,10 +158,90 @@ function Docs({ language }) {
 
     const [sidebar] = createResource(language(), fetchSidebar)
     const [page] = createResource([language(), location.pathname], fetchPage)
+    const [version, setVersion] = createSignal(undefined)
+    const [rightSidebar, setRightSidebar] = createSignal([])
+
+    createEffect(() => {
+        if (page.state === "ready") {
+            console.log(page())
+            setRightSidebar(createRightSidebar(page()))
+        }
+    })
+
+    function changeVersion(version) {
+        // The version is in the URL
+
+        if (version == "latest") {
+            setVersion("latest")
+            window.history.pushState({}, "", location.pathname)
+        } else {
+            setVersion(version)
+            // Set url to the version
+            window.history.pushState({}, "", location.pathname + "?v=" + version)
+        }
+
+
+    }
+
+    createEffect(() => {
+        changeVersion(location.searchParams.get("v") || "latest")
+    })
+
+
+    createEffect(() => {
+        console.log("version changed")
+        // console.log(version())
+        if (version()) {
+
+            changeVersion(version())
+        }
+    })
+
 
 
     return (<>
         <div className="sidebar left nice-scroll  padding-medium scroll">
+
+            <div className="row">
+                <label htmlFor="version">Version:</label>
+                <select name="version" value={version()}
+                    onChange={(e) => {
+                        console.log(e.target.value)
+                        // setVersion(e.target.value)
+                        changeVersion(e.target.value)
+                    }}
+
+                    id="version" class="secondary" style="border: none;
+    padding: 0;
+    margin: 0;
+    margin-left:5px" >
+                    <option value="latest">Latest</option>
+                    <option value="0.02">v 0.02</option>
+                    <option value="0.01">v 0.01</option>
+                    <option value="beta">Beta</option>
+                </select>
+
+                <div class="tooltip">i<div class="tooltip-window bottom"> <p> Více najdete <A href="/versions">zde</A> </p></div></div>
+
+            </div>
+
+            <br />
+
+
+
+            {/* <div className="input padding">
+                <label htmlFor="fdhasfuahiuafiugafh" class="">Verze</label>
+
+                <select name="" class="terciary" id="fdhasfuahiuafiugafh">
+                    <option value="das">Lastest</option>
+                    <option value="a">v 0.02</option>
+                    <option value="a">v 0.01</option>
+                    <option value="sad">Beta</option>
+                </select>
+            </div> */}
+
+
+
             {sidebar.state === "errored" && <h3>404</h3>
             }
             {
@@ -198,82 +290,115 @@ function Docs({ language }) {
 
             {
                 sidebar.state === "ready" && <div>
-                    {JSON.stringify(sidebar())}
-                    {sidebar()}
-                    {sidebar().map((item) => {
+                    {sidebar().map((item) =>
                         <>
-                            <h4>{item.title}</h4>
-                            {console.log(item)}
-                            <p>
-                                AHOJ
-                                {JSON.stringify(item)}
-                            </p>
+                            <h5 innerHTML={item.innerHTML}></h5>
+                            <ul>
+                                {item.children.map((item) =>
+                                    <li><A href={"/" + item.link} innerHTML={item.innerHTML}></A></li>
+                                )}
+                            </ul>
                         </>
-                    })}
+                    )}
                 </div>
             }
-
-
 
         </div>
 
 
 
-        <div className="sections-small">
+        <div className="sections small">
+            <div className="page-section">
 
-            {page()}
-            {page.state === "errored" && <h3>Error</h3>}
-            {
-                page.loading && <div className="loading">
-                    <h1>Lodaing</h1></div>
-            }
+                {page()}
+                {page.state === "errored" && <h3>Error</h3>}
+                {
+                    page.loading && <div className="loading">
+                        <h1>Lodaing</h1></div>
+                }
 
-            {
-                page.state === "ready" && <div className="content" id="contentHalloooooo">
-                    <h1>Ahoj</h1>
-                    {String(page().page)}
-                    {
-                        page().page.map((item) => {
-                            switch (item.type) {
-                                case "h1":
-                                    return <h1 id={item.id} innerHTML={item.innerHtml}></h1>
-                                case "h2":
-                                    return <h2 id={item.id} innerHTML={item.innerHtml}></h2>
-                                case "h3":
-                                    return <h3 id={item.id} innerHTML={item.innerHtml}></h3>
-                                case "h4":
-                                    return <h4 id={item.id} innerHTML={item.innerHtml}></h4>
-                                case "h5":
-                                    return <h5 id={item.id} innerHTML={item.innerHtml}></h5>
-                                case "h6":
-                                    return <h6 id={item.id} innerHTML={item.innerHtml}></h6>
-                                case "p":
-                                    return <p id={item.id} innerHTML={item.innerHtml}></p>
-                                case "iframe":
-                                    return <iframe id={item.id} srcdoc={item.innerHtml}></iframe>
+                {
+                    page.state === "ready" && <div className="content padding" id="contentHalloooooo">
+                        {
+                            page().page.map((item) => {
+                                switch (item.type) {
+                                    case "h1":
+                                        return <h1 id={item.id} innerHTML={item.innerHTML}></h1>
+                                    case "h2":
+                                        return <h2 id={item.id} innerHTML={item.innerHTML}></h2>
+                                    case "h3":
+                                        return <h3 id={item.id} innerHTML={item.innerHTML}></h3>
+                                    case "h4":
+                                        return <h4 id={item.id} innerHTML={item.innerHTML}></h4>
+                                    case "h5":
+                                        return <h5 id={item.id} innerHTML={item.innerHTML}></h5>
+                                    case "h6":
+                                        return <h6 id={item.id} innerHTML={item.innerHTML}></h6>
+                                    case "p":
+                                        return <p id={item.id} innerHTML={item.innerHTML}></p>
+                                    case "iframe":
+                                        return <iframe id={item.id} srcdoc={item.innerHTML}></iframe>
+                                }
+                            })
+                        }
 
-                            }
-                        })
-                    }
+                    </div>
+                }
 
+            </div>
+
+            <div className="info-section">
+                <div className="content">
+                    <hr />
+                    {page.state === "ready" && <>
+                        <p>Author: {page().meta.author}
+                            <br />
+                            Last updated: {page().meta.date}
+                            <br />
+                            {/* TODO! change latest to the actual number */}
+                            Version: {version() === "latest" ? "Latest" : version()}
+
+                        </p>
+                    </>}
                 </div>
-            }
-
+            </div>
 
         </div>
 
 
         <div className="sidebar right nice-scroll m-hidden padding-medium scroll" >
-            <h5>Sidebar - R</h5>
+            {
+                rightSidebar().map((item) => <>
+                    <h6 innerHTML={item.innerHTML}  ></h6>
+                    <ul>
+                        {item.children.map((item) =>
+                            <li><A href={"#" + item.link} innerHTML={item.innerHTML}></A></li>
+                        )}
+                    </ul>
+
+                </>
+                )
+
+
+            }
+            <hr />
             <ul>
-                <li>B</li>
-                <li>C</li>
-                <hr />
-                <li>D</li>
                 <li>
                     <A href="/ahoj">
-                        <span className="icon" style="    padding: 0;font-size:  inherit;}">search</span>
-                        Ahoj
+                        <span className="icon" style="    padding: 0;font-size:  inherit;}">edit</span>
+                        Edit on GitHub
+                    </A>
+                </li>
+                <li>
+                    <A href="/ahoj">
+                        <span className="icon" style="    padding: 0;font-size:  inherit;}">share</span>
+                        Share
+                    </A>
+                </li>
+                <li>
+                    <A href="/ahoj">
+                        <span className="icon" style="    padding: 0;font-size:  inherit;}">print</span>
+                        Print
                     </A>
                 </li>
             </ul>
