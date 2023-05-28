@@ -6,6 +6,7 @@ import { createSignal } from "solid-js";
 import { A } from "@solidjs/router";
 
 const fetchSidebar = async (language) => {
+
     // const response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/docs-sketch/master/Sidebar/${language}.mdx`);
     // console.log(response)
     // const data = await response.text();
@@ -19,11 +20,11 @@ const fetchSidebar = async (language) => {
             "children": [
                 {
                     "innerHTML": "Sample link",
-                    "link": "/docs/introduction/sample-link",
+                    "link": "docs/introduction/sample-link",
                 },
                 {
                     "innerHTML": "Sample link 2",
-                    "link": "/docs/introduction/sample-link-2",
+                    "link": "docs/introduction/sample-link-2",
                 }]
         },
         {
@@ -32,23 +33,23 @@ const fetchSidebar = async (language) => {
             "children": [
                 {
                     "innerHTML": "Accordeon",
-                    "link": "/docs/components/accordeon",
+                    "link": "docs/components/Accordeon",
                 },
                 {
                     "innerHTML": "Badge",
-                    "link": "/docs/components/badge",
+                    "link": "docs/components/Badges",
                 },
                 {
                     "innerHTML": "Buttons",
-                    "link": "/docs/components/buttons",
+                    "link": "docs/components/Buttons",
                 },
                 {
                     "innerHTML": "Cards",
-                    "link": "/docs/components/cards",
+                    "link": "docs/components/cards",
                 },
                 {
                     "innerHTML": "Carousels",
-                    "link": "/docs/components/carousels",
+                    "link": "docs/components/carousels",
                 },
             ]
         }
@@ -58,69 +59,69 @@ const fetchSidebar = async (language) => {
     return testFetchResult;
 }
 
-const fetchPage = async (language, location) => {
+const fetchPage = async (language) => {
+
+    const location = useLocation();
     console.log(location)
-    // let parts = location.split("/");
-    // console.log(parts)
 
-    //     const response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/docs-sketch/master/Introduction/01-whats.md`);
-    //     console.log(response)
-    //     const data = await response.text();
-    //     console.log(data);
-    //   // const js = String(await compile(data, { jsxImportSource: 'solid-js/h', /* otherOptions… */ }))
-    //     const js = await compile(data, { jsxImportSource: 'solid-js/h', /* otherOptions… */ })
-    //     console.log(js)
-    //     return js;
+    let urlIdk = location.pathname
+    urlIdk = urlIdk.replace("/docs/", "")
+    console.log(urlIdk)
+    console.log(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${language}/${urlIdk}.json`)
 
-    const testFetchResult = {
-        "meta": {
-            "title": "Introduction",
-            "description": "Introduction to the Sketch Design System",
-            "keywords": "sketch, design, system, sketch design system, sketch design, sketch system, sketch design system",
-            "author": "NoTime",
-            "date": "16.5.2023"
-        },
-        "page": [
-            {
-                "type": "h1",
-                "innerHTML": "Introduction <span class='badge primary'>New</span>",
-            },
-            {
-                "type": "p",
-                "innerHTML": "Lorem ipsum dolor, sit <span class='badge primary'>New</span> amet consectetur adipisicing elit. Nam porro quas officia consectetur maiores, ipsam totam minus? Mollitia libero harum esse nam! Vel nesciunt delectus blanditiis ut explicabo veritatis fuga?"
-            },
-            {
-                "type": "h2",
-                "innerHTML": "Sample"
-            },
-            {
-                "type": "iframe",
-                "innerHTML": "<h1>Sample heading</h1> <p>Sample text</p>",
-            }
-        ]
+    let response;
+    if (urlIdk === "/") {
+        response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${language}/index.json`);
+    } else {
+        response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${language}/${urlIdk}.json`);
     }
+
+    // Log the responses text
+    console.log(response)
+    const data = await response.json();
+    console.log(data);
+
+    // return data;
+
+    // const testFetchResult = {
+    //     "meta": {
+    //         "title": "Introduction",
+    //         "description": "Introduction to the Sketch Design System",
+    //         "keywords": "sketch, design, system, sketch design system, sketch design, sketch system, sketch design system",
+    //         "author": "NoTime",
+    //         "date": "16.5.2023"
+    //     },
+    //     "page": [
+    //         {
+    //             "type": "h1",
+    //             "innerHTML": "Introduction <span class='badge primary'>New</span>",
+    //         },
+    //         {
+    //             "type": "p",
+    //             "innerHTML": "Lorem ipsum dolor, sit <span class='badge primary'>New</span> amet consectetur adipisicing elit. Nam porro quas officia consectetur maiores, ipsam totam minus? Mollitia libero harum esse nam! Vel nesciunt delectus blanditiis ut explicabo veritatis fuga?"
+    //         },
+    //         {
+    //             "type": "h2",
+    //             "innerHTML": "Sample"
+    //         },
+    //         {
+    //             "type": "iframe",
+    //             "innerHTML": "<h1>Sample heading</h1> <p>Sample text</p>",
+    //         }
+    //     ]
+    // }
     let counter = 0;
 
 
-    for (let i = 0; i < testFetchResult.page.length; i++) {
-
-        testFetchResult.page[i].id = "docs-" + counter + "-id";
+    for (let i = 0; i < data.page.length; i++) {
+        data.page[i].id = "docs-" + counter + "-id";
         counter++;
-
     }
 
-    // TODO!! Tohle vymaz
-    // Make the page tripple as long
+    console.log("data")
+    console.log(data)
 
-    for (let i = 0; i < 15; i++) {
-
-        testFetchResult.page.push(testFetchResult.page[i])
-
-    }
-
-
-
-    return testFetchResult;
+    return data;
 }
 
 function createRightSidebar(pageJSON) {
@@ -154,18 +155,34 @@ function Docs({ language }) {
 
     const location = useLocation();
 
+
+
     console.log(location)
 
     const [sidebar] = createResource(language(), fetchSidebar)
-    const [page] = createResource([language(), location.pathname], fetchPage)
+    const [page] = createResource(language(), fetchPage)
     const [version, setVersion] = createSignal(undefined)
     const [rightSidebar, setRightSidebar] = createSignal([])
+
 
     createEffect(() => {
         if (page.state === "ready") {
             console.log(page())
             setRightSidebar(createRightSidebar(page()))
         }
+    })
+
+    createEffect(() => {
+        // Reload the page when the language changes or the url changes
+        console.log("language changed")
+        console.log(location)
+
+        // Reload the page
+        pa
+
+
+        console.log(page())
+        // sidebar(language())
     })
 
     function changeVersion(version) {
@@ -292,7 +309,7 @@ function Docs({ language }) {
                 sidebar.state === "ready" && <div>
                     {sidebar().map((item) =>
                         <>
-                            <h5 innerHTML={item.innerHTML}></h5>
+                            <h5 innerHTML={item.innerHtml}></h5>
                             <ul>
                                 {item.children.map((item) =>
                                     <li><A href={"/" + item.link} innerHTML={item.innerHTML}></A></li>
@@ -317,27 +334,38 @@ function Docs({ language }) {
                         <h1>Lodaing</h1></div>
                 }
 
+                {/* {
+                    page.state === "ready" && <div className="content padding" >
+                        <h1>Ready</h1>
+                        {page().page.map((item) => <p>{item.type}</p>)}
+                        {page().page.map((item) => <p>{item.id}</p>)}
+                        {page().page.map((item) => <p>{item.innerHTML}</p>)}
+                    </div>
+                } */}
+
                 {
                     page.state === "ready" && <div className="content padding" id="contentHalloooooo">
                         {
                             page().page.map((item) => {
                                 switch (item.type) {
                                     case "h1":
-                                        return <h1 id={item.id} innerHTML={item.innerHTML}></h1>
+                                        return <h1 id={item.id} innerHTML={item.innerHtml}></h1>
                                     case "h2":
-                                        return <h2 id={item.id} innerHTML={item.innerHTML}></h2>
+                                        return <h2 id={item.id} innerHTML={item.innerHtml}></h2>
                                     case "h3":
-                                        return <h3 id={item.id} innerHTML={item.innerHTML}></h3>
+                                        return <h3 id={item.id} innerHTML={item.innerHtml}></h3>
                                     case "h4":
-                                        return <h4 id={item.id} innerHTML={item.innerHTML}></h4>
+                                        return <h4 id={item.id} innerHTML={item.innerHtml}></h4>
                                     case "h5":
-                                        return <h5 id={item.id} innerHTML={item.innerHTML}></h5>
+                                        return <h5 id={item.id} innerHTML={item.innerHtml}></h5>
                                     case "h6":
-                                        return <h6 id={item.id} innerHTML={item.innerHTML}></h6>
+                                        return <h6 id={item.id} innerHTML={item.innerHtml}></h6>
                                     case "p":
-                                        return <p id={item.id} innerHTML={item.innerHTML}></p>
+                                        return <p id={item.id} innerHTML={item.innerHtml}></p>
                                     case "iframe":
-                                        return <iframe id={item.id} srcdoc={item.innerHTML}></iframe>
+                                        return <iframe id={item.id} srcdoc={item.innerHtml}></iframe>
+                                    case "code":
+                                        return <code id={item.id} >{item.innerHtml}</code>
                                 }
                             })
                         }
@@ -369,10 +397,10 @@ function Docs({ language }) {
         <div className="sidebar right nice-scroll m-hidden padding-medium scroll" >
             {
                 rightSidebar().map((item) => <>
-                    <h6 innerHTML={item.innerHTML}  ></h6>
+                    <h6 innerHTML={item.innerHtml}  ></h6>
                     <ul>
                         {item.children.map((item) =>
-                            <li><A href={"#" + item.link} innerHTML={item.innerHTML}></A></li>
+                            <li><A href={"#" + item.link} innerHTML={item.innerHtml}></A></li>
                         )}
                     </ul>
 
