@@ -166,10 +166,6 @@ function Docs({ language }) {
         if (location.pathname != lastPage) {
             refetch()
             lastPage = location.pathname
-
-
-
-
         }
 
 

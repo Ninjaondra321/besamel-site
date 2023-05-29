@@ -594,7 +594,7 @@ function ComponentsPage() {
 
                         </div>
                         <div className="middle">
-                            <input type="text" name="ahoj" id="ahoj" />
+                            <input type="text" class="editable" placeholder="FileName" name="ahoj" id="ahoj" />
 
                         </div>
                         <div className="right">

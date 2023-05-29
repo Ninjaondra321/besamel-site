@@ -4,7 +4,7 @@ import Accordion from "../Components/Accordion";
 
 import { createSignal } from "solid-js";
 
-
+import { A } from "@solidjs/router";
 
 function HomePage() {
     document.title = "A new title";
@@ -37,8 +37,8 @@ function HomePage() {
                     style={{ "text-align": "center" }}
                 >Skvělý css framework</h4>
                 <div className="responsive-rotate center padding-medium">
-                    <button className="secondary large">Ukázky</button>
-                    <button className="primary large">Dokumentace</button>
+                    <A href="/examples" className="btn secondary large">Ukázky</A>
+                    <A href="/docs" className="btn primary large">Dokumentace</A>
                 </div>
             </div>
         </div>
