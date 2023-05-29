@@ -40,12 +40,15 @@ import Page404 from "./Pages/page404";
 import Docs from "./Pages/Docs";
 import Examples from "./Pages/Examples";
 import ThemeCreator from "./Pages/ThemeCreator";
+import Redirecting from "./Functions/Redirecting";
 
 function App() {
 
   const [analyticalCookiesAllowed, setAnalyticalCookiesAllowed] = createSignal(false);
 
-  const [language, setLanguage] = createSignal("en");
+  const [language, setLanguage] = createSignal("cs");
+
+
 
   function setCookies(type, value) {
     let c;
@@ -71,6 +74,7 @@ function App() {
 
       <GenerateStyle />
       <Router  >
+        <Redirecting />
         <NavBar language={language} setLanguage={setLanguage} />
         <div className="main ">
           <Routes >
