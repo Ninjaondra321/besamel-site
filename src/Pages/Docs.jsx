@@ -65,45 +65,21 @@ const fetchSidebar = async (language) => {
 
 const fetchPage = async (language, location) => {
     console.log(location)
-    // let parts = location.split("/");
-    // console.log(parts)
+    let parts = location.split("/");
+    console.log(parts)
 
-    //     const response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/docs-sketch/master/Introduction/01-whats.md`);
-    //     console.log(response)
-    //     const data = await response.text();
-    //     console.log(data);
+
+
+    const response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/docs-sketch/master/${language}/${parts[0]}${parts[1] ? "/" + parts[1] : ""}.md`);
+    console.log(response)
+    const data = await response.text();
+    console.log(data);
     //   // const js = String(await compile(data, { jsxImportSource: 'solid-js/h', /* otherOptions… */ }))
     //     const js = await compile(data, { jsxImportSource: 'solid-js/h', /* otherOptions… */ })
     //     console.log(js)
     //     return js;
 
-    const testFetchResult = {
-        "meta": {
-            "title": "Introduction",
-            "description": "Introduction to the Sketch Design System",
-            "keywords": "sketch, design, system, sketch design system, sketch design, sketch system, sketch design system",
-            "author": "NoTime",
-            "date": "16.5.2023"
-        },
-        "page": [
-            {
-                "type": "h1",
-                "innerHtml": "Introduction <span class='badge primary'>New</span>",
-            },
-            {
-                "type": "p",
-                "innerHtml": "Lorem ipsum dolor, sit <span class='badge primary'>New</span> amet consectetur adipisicing elit. Nam porro quas officia consectetur maiores, ipsam totam minus? Mollitia libero harum esse nam! Vel nesciunt delectus blanditiis ut explicabo veritatis fuga?"
-            },
-            {
-                "type": "h2",
-                "innerHtml": "Sample"
-            },
-            {
-                "type": "iframe",
-                "innerHtml": "<h1>Sample heading</h1> <p>Sample text</p>",
-            }
-        ]
-    }
+    // const testFetchResult = { "meta": { "title": "TODO CHANGE TILE", "description": "Introduction to the Sketch Design System", "keywords": "sketch, design, system, sketch design system, sketch design, sketch system, sketch design system", "author": "NoTime", "date": "16.5.2023" }, "page": [{ "type": "p", "innerHtml": "TODO: sem dopi\u0161 uk\u00e1zku" }, { "type": "h1", "innerHtml": "Structure" }, { "type": "code", "innerHtml": "<p class=\"row\">Default <span className=\"leader\"></span> span.leader</p>\n", "language": "html" }, { "type": "h1", "innerHtml": "Options" }, { "type": "p", "innerHtml": "There are 3 default styles" }, { "type": "list", "innerHtml": [".leader (dotted)", ".leader.dashed", ".leader.solid"] }, { "type": "h1", "innerHtml": "Design guidelines" }, { "type": "code", "innerHtml": "hr {\n /* Style here */\n}\n", "language": "css" }, { "type": "h1", "innerHtml": "Part from BE\u0160AMEL" }, { "type": "code", "innerHtml": "hr {\n\u00a0 \u00a0 width: 100%;\n\u00a0 \u00a0 height: 1px;\n}\n", "language": "css" }] }
 
     let sidebar = [
         {
@@ -146,6 +122,8 @@ function Docs({ language }) {
 
     const [sidebar] = createResource(language(), fetchSidebar)
     const [page] = createResource([language(), location.pathname], fetchPage)
+
+
 
 
     return (<>
@@ -199,7 +177,7 @@ function Docs({ language }) {
             {
                 sidebar.state === "ready" && <div>
                     {JSON.stringify(sidebar())}
-                    {sidebar()}
+                    {/* {sidebar()} */}
                     {sidebar().map((item) => {
                         <>
                             <h4>{item.title}</h4>
@@ -249,8 +227,15 @@ function Docs({ language }) {
                                     return <h6 id={item.id} innerHTML={item.innerHtml}></h6>
                                 case "p":
                                     return <p id={item.id} innerHTML={item.innerHtml}></p>
-                                case "iframe":
+                                case "code":
                                     return <iframe id={item.id} srcdoc={item.innerHtml}></iframe>
+                                case "list":
+                                    return <ul id={item.id}>
+                                        {item.innerHtml.map((item) => {
+                                            return <li innerHTML={item}></li>
+                                        })}
+
+                                    </ul>
 
                             }
                         })
