@@ -41,6 +41,7 @@ import Docs from "./Pages/Docs";
 import Examples from "./Pages/Examples";
 import ThemeCreator from "./Pages/ThemeCreator";
 import Redirecting from "./Functions/Redirecting";
+import ComponentsPage from "./Pages/Examples/Components";
 
 function App() {
 
@@ -84,6 +85,7 @@ function App() {
             <Route path="/examples" element={<Examples language={language} />} />
             <Route path="/theme-creator" element={<ThemeCreator language={language} />} />
 
+            <Route path="/examples/components" element={<ComponentsPage language={language} />} />
 
             <Route path="/cookies" element={<CookiesPage language={language} />} />
 

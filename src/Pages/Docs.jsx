@@ -76,40 +76,19 @@ const fetchPage = async (language) => {
         response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${language}/${urlIdk}.json`);
     }
 
+    if (!response.ok) {
+        return {
+            page: [
+                { type: "h1", innerHtml: "Page not found" }
+            ]
+        }
+    }
+
     // Log the responses text
     console.log(response)
     const data = await response.json();
     console.log(data);
 
-    // return data;
-
-    // const testFetchResult = {
-    //     "meta": {
-    //         "title": "Introduction",
-    //         "description": "Introduction to the Sketch Design System",
-    //         "keywords": "sketch, design, system, sketch design system, sketch design, sketch system, sketch design system",
-    //         "author": "NoTime",
-    //         "date": "16.5.2023"
-    //     },
-    //     "page": [
-    //         {
-    //             "type": "h1",
-    //             "innerHTML": "Introduction <span class='badge primary'>New</span>",
-    //         },
-    //         {
-    //             "type": "p",
-    //             "innerHTML": "Lorem ipsum dolor, sit <span class='badge primary'>New</span> amet consectetur adipisicing elit. Nam porro quas officia consectetur maiores, ipsam totam minus? Mollitia libero harum esse nam! Vel nesciunt delectus blanditiis ut explicabo veritatis fuga?"
-    //         },
-    //         {
-    //             "type": "h2",
-    //             "innerHTML": "Sample"
-    //         },
-    //         {
-    //             "type": "iframe",
-    //             "innerHTML": "<h1>Sample heading</h1> <p>Sample text</p>",
-    //         }
-    //     ]
-    // }
     let counter = 0;
 
 
@@ -129,9 +108,11 @@ function createRightSidebar(pageJSON) {
 
     for (let i = 0; i < pageJSON.page.length; i++) {
 
+
+
         if (pageJSON.page[i].type === "h1") {
             rightSidebar.push({
-                "innerHTML": pageJSON.page[i].innerHTML,
+                "innerHtml": pageJSON.page[i].innerHtml,
                 "link": pageJSON.page[i].id,
                 "children": []
             })
@@ -139,7 +120,7 @@ function createRightSidebar(pageJSON) {
         else if (pageJSON.page[i].type === "h2") {
 
             rightSidebar[rightSidebar.length - 1].children.push({
-                "innerHTML": pageJSON.page[i].innerHTML,
+                "innerHtml": pageJSON.page[i].innerHtml,
                 "link": pageJSON.page[i].id,
             })
         }
@@ -156,11 +137,16 @@ function Docs({ language }) {
     const location = useLocation();
 
 
-
     console.log(location)
 
+    function hightlightCode() {
+        hljs.highlightAll()
+    }
+
+    var lastPage = "/"
+
     const [sidebar] = createResource(language(), fetchSidebar)
-    const [page] = createResource(language(), fetchPage)
+    const [page, { mutate, refetch }] = createResource(language(), fetchPage)
     const [version, setVersion] = createSignal(undefined)
     const [rightSidebar, setRightSidebar] = createSignal([])
 
@@ -177,8 +163,16 @@ function Docs({ language }) {
         console.log("language changed")
         console.log(location)
 
-        // Reload the page
-        pa
+        if (location.pathname != lastPage) {
+            refetch()
+            lastPage = location.pathname
+
+
+
+
+        }
+
+
 
 
         console.log(page())
@@ -212,6 +206,13 @@ function Docs({ language }) {
 
             changeVersion(version())
         }
+    })
+
+
+    createEffect(() => {
+        console.log(page)
+        console.log(page())
+        hightlightCode()
     })
 
 
@@ -312,6 +313,7 @@ function Docs({ language }) {
                     {sidebar().map((item) =>
                         <>
                             <h5 innerHTML={item.innerHtml}></h5>
+
                             <ul>
                                 {item.children.map((item) =>
                                     <li><A href={"/" + item.link} innerHTML={item.innerHTML}></A></li>
@@ -319,12 +321,21 @@ function Docs({ language }) {
                             </ul>
                         </>
                     )}
+
+                    <script>
+
+                        hljs.highlightAll()
+                        console.log("HelloWOrld");
+                    </script>
+
                 </div>
             }
 
         </div>
 
-
+        {/* <button onclick={hightlightCode}>
+            HIGHTLIGHT ALL
+        </button> */}
 
         <div className="sections small">
             <div className="page-section">
@@ -367,7 +378,8 @@ function Docs({ language }) {
                                     case "iframe":
                                         return <iframe id={item.id} srcdoc={item.innerHtml}></iframe>
                                     case "code":
-                                        return <code id={item.id} >{item.innerHtml}</code>
+                                        // return <code id={item.id} >{item.innerHtml}</code>
+                                        return <pre><code id={item.id} class={`hljs ${item.language} language-${item.language}`}>{item.innerHtml}</code> <script>hljs.highlightAll();                                        </script> </pre>
                                 }
                             })
                         }
@@ -380,7 +392,7 @@ function Docs({ language }) {
             <div className="info-section">
                 <div className="content">
                     <hr />
-                    {page.state === "ready" && <>
+                    {(page.state === "ready" && page().meta) && <>
                         <p>Author: {page().meta.author}
                             <br />
                             Last updated: {page().meta.date}
@@ -399,7 +411,10 @@ function Docs({ language }) {
         <div className="sidebar right nice-scroll m-hidden padding-medium scroll" >
             {
                 rightSidebar().map((item) => <>
-                    <h6 innerHTML={item.innerHtml}  ></h6>
+                    <A href={location.pathname + "#" + item.link}>
+
+                        <h6 innerHTML={item.innerHtml}  ></h6>
+                    </A>
                     <ul>
                         {item.children.map((item) =>
                             <li><A href={"#" + item.link} innerHTML={item.innerHtml}></A></li>
