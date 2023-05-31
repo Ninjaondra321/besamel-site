@@ -1967,3 +1967,32 @@ html {
     scroll-behavior: smooth;
 
 }
+
+.nav-drawer {
+    background-color: #1e1d3a;
+    z-index: -1;
+}
+
+a:not(.btn),
+.icon-btn {
+    color: var(--primary-color) !important;
+}
+
+.navbar a {
+    color: var(--secondary-color) !important;
+}
+
+
+button {
+    text-align: center;
+    justify-content: center
+}
+
+span.icon,
+span.g-icon {
+    padding-right: 5px;
+}
+
+.sidebar a {
+    width: 100%;
+}

@@ -7,57 +7,74 @@ import { A } from "@solidjs/router";
 
 const fetchSidebar = async (language) => {
 
-    // const response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/docs-sketch/master/Sidebar/${language}.mdx`);
-    // console.log(response)
-    // const data = await response.text();
-    // console.log(data);
-    // return data;
+    const response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${language}/sidebar.json`);
+    console.log(response)
+    const data = await response.text();
+    console.log(data);
+    console.log("Ahoj")
+    console.log(Array.from(data))
+    console.log(JSON.parse(data))
+    console.log("Ahoj podruhe")
+    console.log(data)
+    return JSON.parse(data);
 
-    const testFetchResult = [
-        {
-            "innerHTML": "Introduction",
-            "link": "/docs/introduction",
-            "children": [
-                {
-                    "innerHTML": "Sample link",
-                    "link": "docs/introduction/sample-link",
-                },
-                {
-                    "innerHTML": "Sample link 2",
-                    "link": "docs/introduction/sample-link-2",
-                }]
-        },
-        {
-            "innerHTML": "Components",
-            "link": "/docs/components",
-            "children": [
-                {
-                    "innerHTML": "Accordeon",
-                    "link": "docs/components/Accordeon",
-                },
-                {
-                    "innerHTML": "Badge",
-                    "link": "docs/components/Badges",
-                },
-                {
-                    "innerHTML": "Buttons",
-                    "link": "docs/components/Buttons",
-                },
-                {
-                    "innerHTML": "Cards",
-                    "link": "docs/components/cards",
-                },
-                {
-                    "innerHTML": "Carousels",
-                    "link": "docs/components/carousels",
-                },
-            ]
-        }
-    ]
+    // const testFetchResult = [
+    //     {
+    //         "innerHTML": "Introduction",
+    //         "link": "/docs/introduction",
+    //         "children": [
+    //             {
+    //                 "innerHTML": "Sample link",
+    //                 "link": "docs/introduction/sample-link",
+    //             },
+    //             {
+    //                 "innerHTML": "Sample link 2",
+    //                 "link": "docs/introduction/sample-link-2",
+    //             }]
+    //     },
+    //     {
+    //         "innerHTML": "Components",
+    //         "link": "/docs/components",
+    //         "children": [
+    //             {
+    //                 "innerHTML": "Accordeon",
+    //                 "link": "docs/components/Accordeon",
+    //             },
+    //             {
+    //                 "innerHTML": "Badge",
+    //                 "link": "docs/components/Badges",
+    //             },
+    //             {
+    //                 "innerHTML": "Buttons",
+    //                 "link": "docs/components/Buttons",
+    //             },
+    //             {
+    //                 "innerHTML": "Cards",
+    //                 "link": "docs/components/cards",
+    //             },
+    //             {
+    //                 "innerHTML": "Carousels",
+    //                 "link": "docs/components/carousels",
+    //             },
+    //         ]
+    //     }
+    // ]
 
-    console.log(testFetchResult)
-    return testFetchResult;
+    // console.log(testFetchResult)
+    // return testFetchResult;
 }
+
+function getPageUrl(language) {
+    const location = useLocation();
+    console.log(location)
+
+    let urlIdk = location.pathname
+    urlIdk = urlIdk.replace("/docs/", "")
+    console.log(urlIdk)
+
+    return `main/${language}/${urlIdk}.json`
+}
+
 
 const fetchPage = async (language) => {
 
@@ -73,7 +90,7 @@ const fetchPage = async (language) => {
     if (urlIdk === "/") {
         response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${language}/index.json`);
     } else {
-        response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${language}/${urlIdk}.json`);
+        response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/` + getPageUrl(language));
     }
 
     if (!response.ok) {
@@ -312,7 +329,7 @@ function Docs({ language }) {
 
                             <ul>
                                 {item.children.map((item) =>
-                                    <li><A href={"/" + item.link} innerHTML={item.innerHTML}></A></li>
+                                    <li><A href={"/docs" + item.link} innerHTML={item.innerHtml}></A></li>
                                 )}
                             </ul>
                         </>
@@ -374,8 +391,10 @@ function Docs({ language }) {
                                     case "iframe":
                                         return <iframe id={item.id} srcdoc={item.innerHtml}></iframe>
                                     case "code":
-                                        // return <code id={item.id} >{item.innerHtml}</code>
-                                        return <pre><code id={item.id} class={`hljs ${item.language} language-${item.language}`}>{item.innerHtml}</code> <script>hljs.highlightAll();                                        </script> </pre>
+
+                                        return <div className="w-12">
+                                            <pre><code id={item.id} onclick={hljs.highlightAll} class={`hljs ${item.language} language-${item.language}`}>{item.innerHtml}</code>  </pre>
+                                        </div>
                                 }
                             })
                         }
@@ -425,7 +444,7 @@ function Docs({ language }) {
             <hr />
             <ul>
                 <li>
-                    <A href="/ahoj">
+                    <A href={"https://github.com/Ninjaondra321/besamel-docs/blob/main/" + getPageUrl(language)}>
                         <span className="icon" style="    padding: 0;font-size:  inherit;}">edit</span>
                         Edit on GitHub
                     </A>

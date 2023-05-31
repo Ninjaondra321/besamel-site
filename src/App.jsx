@@ -44,6 +44,8 @@ import Redirecting from "./Functions/Redirecting";
 import ComponentsPage from "./Pages/Examples/Components";
 import Sections from "./Pages/Examples/Sections";
 
+const supprotedLanguages = ["cs", "en"];
+
 function App() {
 
   const [analyticalCookiesAllowed, setAnalyticalCookiesAllowed] = createSignal(false);
@@ -77,7 +79,7 @@ function App() {
       <GenerateStyle />
       <Router  >
         <Redirecting />
-        <NavBar language={language} setLanguage={setLanguage} />
+        <NavBar language={language} setLanguage={setLanguage} languages={supprotedLanguages} />
         <div className="main ">
           <Routes >
             <Route path="/" element={<HomePage language={language} />} />

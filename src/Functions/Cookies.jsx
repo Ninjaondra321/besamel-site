@@ -1,4 +1,4 @@
-import { onMount, createSignal, Show } from "solid-js";
+import { onMount, createSignal, Show, createEffect } from "solid-js";
 import { A } from "@solidjs/router";
 
 
@@ -7,6 +7,9 @@ function Cookies() {
 
     const [showCookies, setShowCookies] = createSignal(false);
     const [cookiesAllowed, setCookiesAllowed] = createSignal(undefined);
+
+
+    const [prozatimni, setProzatimni] = createSignal(true)
 
 
     onMount(() => {
@@ -41,7 +44,7 @@ function Cookies() {
         }
 
 
-        {showCookies() &&
+        {(showCookies() && prozatimni()) &&
 
             <div className="cookies-banner center">
                 <div className="content light padding-medium responsive-rotate">
@@ -52,10 +55,10 @@ function Cookies() {
                             Více informací o souborech cookies naleznete <A href="/cookies">zde</A>.</p>
                     </div>
                     <div className="center w-1000px m-w-12">
-                        <button className="primary w-12">
+                        <button className="primary w-12" onclick={() => setProzatimni(false)}>
                             <span className="g-icon"> done</span>
                             Povolit </button>
-                        <button className="secondary w-12">
+                        <button className="secondary w-12" onclick={() => setProzatimni(false)}>
                             <span className="g-icon">close</span>
                             Zakázat </button>
 

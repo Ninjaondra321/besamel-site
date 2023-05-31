@@ -64,7 +64,10 @@ function NavBar({ language, setLanguage, languages }) {
                     <div className="center">
                         <header>Nové menu najdete <a href="#">zde</a></header>
                     </div>
-                    <div className="right">
+                    <div className="right row">
+
+
+
                         <button onclick={() => { language() === "cs" ? setLanguage("en") : setLanguage("cs") }} className="primary">Change language - now: {language()}</button>
                         <button className="icon-btn small " onClick={() => setShowBanner(false)}>
                             close
@@ -94,6 +97,14 @@ function NavBar({ language, setLanguage, languages }) {
                         <A href={"/examples"} > {dictionary["examples"][language()]} </A>
                         <A href={"/theme-creator"}>{dictionary["theme-creator"][language()]}</A>
                         <A href={"/versions"}>{dictionary["versions"][language()]}</A>
+                        <select name="language" id="language"
+                            value={language()}
+                            onChange={(e) => { setLanguage(e.target.value) }}
+                        >
+                            {languages.map((lang) =>
+                                <option value={lang}>{lang}</option>
+                            )}
+                        </select>
 
                         <div className="dropdown">
                             <p className="dropdown-heading">Dropdown</p>
