@@ -9,7 +9,9 @@ import { Router, Routes, Route } from "@solidjs/router"
 // import '../Styles/components_01.css';
 import GenerateStyle from './Functions/GenerateStyle';
 
-import '../Styles/style.css';
+// import '../Styles/style.css';
+import '../Styles/besamel_03.css';
+import '../Styles/component_styles.css';
 
 
 

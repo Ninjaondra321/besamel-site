@@ -2,14 +2,14 @@ import { createSignal, mergeProps, Match, onMount } from "solid-js";
 
 
 
-export function CarouselWrap(props) {
+export function CarouselWrap({ maximised = false, children }) {
     let carouselRef;
     function scrollLeft() {
-        carouselRef.scrollLeft = carouselRef.scrollLeft - 200;
+        carouselRef.scrollLeft = carouselRef.scrollLeft - carouselRef.clientWidth + 50;
     }
 
     function scrollRight() {
-        carouselRef.scrollLeft = carouselRef.scrollLeft + 200;
+        carouselRef.scrollLeft = carouselRef.scrollLeft + carouselRef.clientWidth - 50;
     }
 
     let pos = { top: 0, left: 0, x: 0, y: 0 };
@@ -53,10 +53,12 @@ export function CarouselWrap(props) {
         <div className="right-control m-hidden" onClick={scrollRight}>
             <button class="carousel-control-r"  >chevron_right</button>
         </div>
-        <div className="carousel" ref={carouselRef} onmousedown={mouseDownHandler}>
-            {props.children}
+        <div className={"carousel " + (maximised ? " maximised" : "")} ref={carouselRef} onmousedown={mouseDownHandler}>
+            {/* {props.children} */}
+            {children}
         </div>
     </div>);
 }
+
 
 export default CarouselWrap;

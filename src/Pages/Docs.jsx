@@ -6,16 +6,9 @@ import { createSignal } from "solid-js";
 import { A } from "@solidjs/router";
 
 const fetchSidebar = async (language) => {
-
+    console.log("fetching sidebar")
     const response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${language}/sidebar.json`);
-    console.log(response)
     const data = await response.text();
-    console.log(data);
-    console.log("Ahoj")
-    console.log(Array.from(data))
-    console.log(JSON.parse(data))
-    console.log("Ahoj podruhe")
-    console.log(data)
     return JSON.parse(data);
 
     // const testFetchResult = [
@@ -162,12 +155,12 @@ function Docs({ language }) {
 
     var lastPage = "/"
 
-    const [sidebar] = createResource(language(), fetchSidebar)
+    const [sidebar, { mutate: ahoj, refetch: refetchSidebar }] = createResource(language(), fetchSidebar)
     const [page, { mutate, refetch }] = createResource(language(), fetchPage)
     const [version, setVersion] = createSignal(undefined)
     const [rightSidebar, setRightSidebar] = createSignal([])
 
-
+    // Load the right sidebar every time the page changes
     createEffect(() => {
         if (page.state === "ready") {
             console.log(page())
@@ -175,8 +168,8 @@ function Docs({ language }) {
         }
     })
 
+    // Reload the page when the language changes or the url changes
     createEffect(() => {
-        // Reload the page when the language changes or the url changes
         console.log("language changed")
         console.log(location)
 
@@ -184,12 +177,14 @@ function Docs({ language }) {
             refetch()
             lastPage = location.pathname
         }
+    })
 
-
-
-
-        console.log(page())
-        // sidebar(language())
+    // Change sidebar every time lanugage changes
+    createEffect(() => {
+        console.log("language changed")
+        console.log(language())
+        refetchSidebar()
+        // sidebar.refetch()
     })
 
     function changeVersion(version) {
@@ -223,7 +218,7 @@ function Docs({ language }) {
 
 
     createEffect(() => {
-        console.log(page)
+        // console.log(page)
         console.log(page())
         hightlightCode()
     })
@@ -239,8 +234,6 @@ function Docs({ language }) {
                 <label htmlFor="version">Version:</label>
                 <select name="version" value={version()}
                     onChange={(e) => {
-                        console.log(e.target.value)
-                        // setVersion(e.target.value)
                         changeVersion(e.target.value)
                     }}
 
@@ -346,9 +339,6 @@ function Docs({ language }) {
 
         </div>
 
-        {/* <button onclick={hightlightCode}>
-            HIGHTLIGHT ALL
-        </button> */}
 
         <div className="sections small">
             <div className="page-section">

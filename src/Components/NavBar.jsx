@@ -62,13 +62,9 @@ function NavBar({ language, setLanguage, languages }) {
                     <div className="left">
                     </div>
                     <div className="center">
-                        <header>Nové menu najdete <a href="#">zde</a></header>
+                        <header>Tahle stránka je zatím v development verzi - nemusí fungovat správně</header>
                     </div>
                     <div className="right row">
-
-
-
-                        <button onclick={() => { language() === "cs" ? setLanguage("en") : setLanguage("cs") }} className="primary">Change language - now: {language()}</button>
                         <button className="icon-btn small " onClick={() => setShowBanner(false)}>
                             close
                         </button>
