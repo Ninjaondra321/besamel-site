@@ -74,12 +74,17 @@ function NavBar({ language, setLanguage, languages }) {
 
             <div className="navbar ">
 
-                <div className="left">
-                    <A href="/#" end={true}>
-                        <span className="icon-btn ">
-                            coffee
-                        </span>
-                        <header>Kavárna ZadeK</header>
+                <div className="left " style={{ padding: 0, height: "100%" }}>
+                    <A href="/#" end={true} style={{ padding: 0, height: "100%" }}>
+                        <header class="all-center" style={{ padding: 0, height: "100%", "font-size": "1.4rem" }}>
+                            <div className="row">
+
+                                <span className="icon" style={{ color: "var(--secondary-color)" }}>
+                                    bug_report
+                                </span>
+                                BEŠAMEL
+                            </div>
+                        </header>
 
                     </A>
                 </div>
@@ -118,7 +123,7 @@ function NavBar({ language, setLanguage, languages }) {
                     </div>
                 </div>
 
-            </div>
+            </div >
             <div className={"nav-drawer fullscreen  bg" + (drawerShown() ? " opened" : " closed")}>
                 <div className="drawer-content to-left">
                     <A href="/">Home</A>

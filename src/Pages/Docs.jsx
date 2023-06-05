@@ -381,10 +381,30 @@ function Docs({ language }) {
                                     case "iframe":
                                         return <iframe id={item.id} srcdoc={item.innerHtml}></iframe>
                                     case "code":
+                                        return <>
+                                            {console.log(item)}
+                                            {item.sample &&
+                                                <div className="example" innerHTML={item.innerHtml}>
+                                                </div>
+                                            }
 
-                                        return <div className="w-12">
-                                            <pre><code id={item.id} onclick={hljs.highlightAll} class={`hljs ${item.language} language-${item.language}`}>{item.innerHtml}</code>  </pre>
-                                        </div>
+                                            <div className="w-12">
+                                                <pre><code id={item.id} onclick={hljs.highlightAll} class={`hljs ${item.language} language-${item.language}`}>{item.innerHtml}</code>  </pre>
+                                            </div>
+                                        </>
+
+
+
+                                    // <div className="w-12">
+                                    //     <pre><code id={item.id} onclick={hljs.highlightAll} class={`hljs ${item.language} language-${item.language}`}>{item.innerHtml}</code>  </pre>
+                                    // </div>
+                                    // case "sample":
+                                    //     return <>
+                                    //         <div className="example" innerHTML={item.innerHtml}>
+
+                                    //         </div>
+                                    //         <pre><code id={item.id} onclick={hljs.highlightAll} class={`hljs ${item.language} language-${item.language}`}>{item.innerHtml}</code>  </pre>
+                                    //     </>
                                 }
                             })
                         }

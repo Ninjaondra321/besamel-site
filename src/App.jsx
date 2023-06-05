@@ -84,6 +84,7 @@ function App() {
         <NavBar language={language} setLanguage={setLanguage} languages={supprotedLanguages} />
         <div className="main ">
           <Routes >
+            {/*  */}
             <Route path="/" element={<HomePage language={language} />} />
             <Route path="/docs" element={<Docs language={language} />} />
             <Route path="/docs/*" element={<Docs language={language} />} />

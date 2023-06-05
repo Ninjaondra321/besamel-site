@@ -264,9 +264,12 @@ h4.responsive-heading {
 .navbar {
     background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-color-muted) 100%);
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
 
+nav {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+
+}
 
 
 .navbar .inactive,
@@ -701,7 +704,15 @@ input:checked+.chip {
     border-radius: var(--border-radius-components);
 }
 
-.offcanvas {}
+.offcanvas {
+    background: var(--font-color-light);
+    animation: slide-l 0.3s ease-in-out;
+}
+
+.offcanvas.right {
+    animation: slide-r 0.3s ease-in-out;
+}
+
 
 /* * Text loading animation */
 .loading {
@@ -714,8 +725,6 @@ input:checked+.chip {
 /* Horizontal ruler */
 hr {
     border: 0;
-    width: 100%;
-    height: 1px;
     border-bottom: solid 2px;
     border-image: linear-gradient(to right, var(--primary-color-muted), var(--primary-color), var(--primary-color-muted)) 1;
 }
@@ -786,4 +795,26 @@ textarea::-webkit-scrollbar-thumb:hover,
     border-radius: var(--border-radius-components);
     border: 1px solid var(--primary-color-static);
 
+}
+
+
+/* ! */
+.new-dropdown>.new-dropdown-window {
+    background-color: var(--font-color-light);
+}
+
+.new-dropdown>.new-dropdown-window {
+    display: none;
+}
+
+.new-dropdown *:focus+.new-dropdown-window {
+    display: block;
+}
+
+
+.example {
+    background-color: var(--primary-color-muted);
+    border-radius: var(--border-radius-components);
+    padding: 10px;
+    border: 1px solid var(--primary-color-static);
 }
