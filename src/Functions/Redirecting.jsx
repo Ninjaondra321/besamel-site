@@ -3,7 +3,7 @@ import { useLocation } from "@solidjs/router";
 import { useNavigate } from "@solidjs/router";
 
 
-function Redirecting() {
+function Redirecting({ supprotedLanguages }) {
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -23,7 +23,16 @@ function Redirecting() {
         navigate(s); // Redirect to the specified URL
 
 
-    } else {
+    } else if (!supprotedLanguages.includes(location.pathname.substring(1, 3))) {
+        console.log(!supprotedLanguages.includes(location.pathname.substring(1, 3)));
+
+        const urlWithoutRedirect = s + location.hash;
+        window.history.replaceState(null, "", urlWithoutRedirect);
+        navigate(s);
+
+    }
+
+    else {
         console.log("no redirect");
     }
 

@@ -47,13 +47,156 @@ function ComponentsPage() {
     return (<>
         <div className="sections">
 
+            <div className="utilities">
+                <div className="content">
+                    <h1>Utilities</h1>
+                    <h1>Utilities</h1>
+
+                    <div className="row">
+
+
+                        <div className="card hover bg w-4 h-200px dark pos-sw">
+                            <img src={Img_20} alt="Img_20" id="debug" class="make-section-bg" />
+
+                            <div className="hover-show column pos-e">
+                                <h4 className="">Hovered</h4>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                            </div>
+                            <div className="hover-hide">
+                                {/* Icon  */}
+                                <span className="g-icon">arrow_forward</span>
+                            </div>
+
+                        </div>
+                        <div className="card hover bg w-4 h-200px dark pos-s">
+                            <img src={Img_20} alt="Img_20" id="debug" class="make-section-bg" />
+                            <div className="hover-show column">
+                                <h4 className="">Hovered</h4>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                            </div>
+                            <div className="hover-hide">
+                                {/* Icon  */}
+                                <span className="g-icon">arrow_forward</span>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div className="position-section bg">
+                <img src={Img_1} class="make-section-bg to-w to-left" alt="" />
+                <div className="content">
+                    <h1>Position</h1>
+
+                    <div className="row wrap">
+                        <div className="card bg w-2 h-200px pos-w hover">
+                            <span className="icon hover-hide">west</span>
+                            <h4 className="hover-show">West</h4>
+                        </div>
+
+                        <div className="card bg w-2 h-200px pos-e hover">
+                            <span className="icon hover-hide">east</span>
+                            <h4 className="hover-show">East</h4>
+                        </div>
+                        <div className="card bg w-2 h-200px pos-s hover">
+                            <span className="icon hover-hide">south</span>
+                            <h4 className="hover-show">South</h4>
+                        </div>
+                        <div className="card bg w-2 h-200px pos-n hover">
+                            <span className="icon hover-hide">north</span>
+                            <h4 className="hover-show">North</h4>
+                        </div>
+
+                        <div className="card bg w-2 h-200px pos-nw hover">
+                            <span className="icon hover-hide">north_west</span>
+                            <h4 className="hover-show">North west</h4>
+                        </div>
+                        <div className="card bg w-2 h-200px pos-ne hover">
+                            <span className="icon hover-hide">north_east</span>
+                            <h4 className="hover-show">North east</h4>
+                        </div>
+                        <div className="card bg w-2 h-200px pos-se hover">
+                            <span className="icon hover-hide">south_east</span>
+                            <h4 className="hover-show">South east</h4>
+                        </div>
+                        <div className="card bg w-2 h-200px pos-sw hover">
+                            <span className="icon hover-hide">south_west</span>
+                            <h4 className="hover-show">South west</h4>
+                        </div>
+
+                    </div>
+
+                    <hr />
+
+                    <div className="row wrap">
+                        <div className="card h-200px w-2 hover pos">
+                            <div className="to-w">
+                                <h4 class="hover-hide"><span class="icon">west</span></h4>
+                                <h4 class="hover-show">To west</h4>
+                            </div>
+                        </div>
+                        <div className="card h-200px w-2 hover pos">
+                            <div className="to-s">
+                                <h4 class="hover-hide"><span class="icon">south</span></h4>
+                                <h4 class="hover-show">To south</h4>
+                            </div>
+                        </div>
+                        <div className="card h-200px w-2 hover pos">
+                            <div className="to-n">
+                                <h4 class="hover-hide"><span class="icon">north</span></h4>
+                                <h4 class="hover-show">To north</h4>
+                            </div>
+                        </div>
+                        <div className="card h-200px w-2 hover pos ">
+                            <div className="to-e">
+                                <h4 class="hover-hide"><span class="icon">east</span></h4>
+                                <h4 class="hover-show">To east</h4>
+
+                            </div>
+                        </div>
+
+                        <div className="card h-200px w-2 hover pos ">
+                            <div className="to-sw">
+                                <h4 class="hover-hide"><span class="icon">south_west</span></h4>
+                                <h4 class="hover-show">To south west</h4>
+                            </div>
+                        </div>
+                        <div className="card h-200px w-2 hover pos ">
+                            <div className="to-se">
+                                <h4 class="hover-hide"><span class="icon">south_west</span></h4>
+                                <h4 class="hover-show">To south west</h4>
+                            </div>
+                        </div>
+
+                        <div className="card h-200px w-2 hover pos ">
+                            <div className="to-nw">
+                                <h4 class="hover-hide"><span class="icon">south_west</span></h4>
+                                <h4 class="hover-show">To south west</h4>
+                            </div>
+                        </div>
+                        <div className="card h-200px w-2 hover pos ">
+                            <div className="to-ne">
+                                <h4 class="hover-hide"><span class="icon">south_west</span></h4>
+                                <h4 class="hover-show">To south west</h4>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
 
             <div className="accordion-section">
                 <div className="content">
                     <h1>Accordion</h1>
                     <Accordion contents={[
-                        { header: "Ahoj", content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, sequi quaerat. Possimus hic, quaerat ut eos repellat sint minus doloremque beatae fuga mollitia nulla perferendis commodi quibusdam sequi? Saepe, est!" },
-                        { header: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, sequi quaerat. Possimus hic, quaerat ut eos repellat sint minus doloremque beatae", content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, sequi quaerat. Possimus hic, quaerat ut eos repellat sint minus doloremque beatae fuga mollitia nulla perferendis commodi quibusdam sequi? Saepe, est!" },
+                        { header: "Ahoj", content: "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, sequi quaerat. Possimus hic, quaerat ut eos repellat sint minus doloremque beatae fuga mollitia nulla perferendis commodi quibusdam sequi? Saepe, est! </p>" },
+                        { header: " <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, sequi quaerat. Possimus hic, quaerat ut eos repellat sint minus doloremque beatae", content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, sequi quaerat. Possimus hic, quaerat ut eos repellat sint minus doloremque beatae fuga mollitia nulla perferendis commodi quibusdam sequi? Saepe, est! </p>" },
                     ]}
                         oneOpened={true}
                     />
@@ -101,39 +244,39 @@ function ComponentsPage() {
                 <div className="content">
 
                     <h1>Buttons</h1>
-                    <div className="padding flex" style={{ "flex-wrap": "wrap" }}>
+                    <div className="padding row subtle-scroll" >
                         <button className="primary">Hello Word</button>
                         <button className="secondary">Lorem ipsum</button>
                         <button className="terciary">Lorem ipsum</button>
                         <button className="plain">Lorem ipsum</button>
                     </div>
-                    <div className="padding flex">
+                    <div className="padding row subtle-scroll">
                         <a href="" className="btn primary">HelloWorld</a>
                         <a href="" className="btn secondary">Lorem ipsum</a>
                         <a href="" className="btn terciary">Lorem ipsum</a>
                         <a href="" className="btn plain">Lorem ipsum</a>
                     </div>
 
-                    <div className="padding flex" style={{ "flex-wrap": "wrap" }}>
+                    <div className="padding row subtle-scroll" >
                         <button disabled className="primary">Hello Word</button>
                         <button disabled className="secondary">Lorem ipsum</button>
                         <button disabled className="terciary">Lorem ipsum</button>
                         <button disabled className="plain">Lorem ipsum</button>
                     </div>
-                    <div className="padding flex" style={{ "flex-wrap": "wrap" }}>
+                    <div className="padding row subtle-scroll" >
                         <button className="primary"> <span className="g-icon">arrow_forward</span> Hello Word</button>
                         <button className="secondary"><span className="g-icon">arrow_forward</span>Lorem ipsum</button>
                         <button className="terciary">Lorem ipsum</button>
                         <button className="plain">Lorem ipsum</button>
                     </div>
-                    <div className="padding flex" style={{ "flex-wrap": "wrap" }}>
+                    <div className="padding row subtle-scroll" >
                         <button className="primary "> Hello Word  <span className="g-icon">arrow_forward</span></button>
                         <button className="secondary">Lorem ipsum  <span className="g-icon">arrow_forward</span></button>
                         <button className="terciary">Lorem ipsum  <span className="g-icon">arrow_forward</span></button>
                         <button className="plain">Lorem ipsum  <span className="g-icon">arrow_forward</span></button>
                     </div>
 
-                    <div className="padding flex" style={{ "flex-wrap": "wrap" }}>
+                    <div className="padding row subtle-scroll" >
                         <button className="large primary">Hello Word</button>
                         <button className="large secondary">Lorem ipsum</button>
                         <button className="large terciary">Lorem ipsum</button>
@@ -163,44 +306,72 @@ function ComponentsPage() {
                         <h4>Terciary card</h4>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores nesciunt, magnam tempora blanditiis, architecto incidunt neque vel earum distinctio animi suscipit laborum fugiat facilis placeat iure voluptatem culpa inventore at.</p>
                     </div>
+
+                    <h1>Cards with layout </h1>
+                    <div className="row">
+                        <div className="card layout hover primary w-4">
+                            <div className="card-head">
+                                <img src={Img_20} alt="" />
+                            </div>
+                            <div className="card-body">
+                                <h4>Layout card</h4>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur laborum possimus dolore doloribus ipsa quo. Lorem ipsum dolor sit amet.</p>
+                            </div>
+                            <div className="card-footer row space-between">
+                                <p>Footer</p>
+
+                                <h3 className="g-icon hover-show">east</h3>
+
+                            </div>
+                        </div>
+
+                        <div className="card layout hover w-4">
+                            <div className="card-head">
+                                <img src={Img_20} alt="" />
+                            </div>
+                            <div className="card-body">
+                                <h4>Layout card</h4>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur laborum possimus dolore doloribus ipsa quo. Lorem ipsum dolor sit amet.</p>
+                            </div>
+                            <div className="card-footer row space-between">
+                                <p>Footer</p>
+
+                                <h3 className="g-icon hover-show">east</h3>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div >
+
+
+            <img src={Joiner} alt="" className="joiner h-300px" />
+
+
+            <div className="joiner-section">
+
+                <div className="content">
+                    <h1>Joiner</h1>
+                    <p>To je mimochodem ono</p>
                 </div>
             </div>
 
 
-            <div className="carousel-section column">
+            <div className="carousel-section column"
+            // style={{ "background-color": "#cee34b" }}
+            // bg="#cee34b"
 
+            >
+                <div className="background" bg="#cee34b"> </div>
                 <div className="content" style="margin-bottom:7px">
+                    <div className="make-section-bg"
+                        style={{ "background-color": "#cee34b" }}
+                    >
+
+                    </div>
                     <h1>Carousels</h1>
-
-
-                    {/* 
-                    <div style="position:relative; height:100%; width:100%" class="carousel-parent ">
-
-                        <div className="carousel fade-edge   ">
-
-                            <div className="card w-500px m-w-12">
-                                <h4>Hello World</h4>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum eius enim nostrum, dolorum ex fuga facilis pariatur animi, tempore maiores esse dolor dolore sapiente quaerat repudiandae incidunt reiciendis eveniet explicabo!</p>
-                            </div>
-
-                            <div className="card w-500px m-w-12">
-                                <h4>Hello World</h4>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum eius enim nostrum, dolorum ex fuga facilis pariatur animi, tempore maiores esse dolor dolore sapiente quaerat repudiandae incidunt reiciendis eveniet explicabo!</p>
-                            </div>
-
-                            <div className="card secondary w-500px m-w-12">
-                                <h4>Hello World</h4>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum eius enim nostrum, dolorum ex fuga facilis pariatur animi, tempore maiores esse dolor dolore sapiente quaerat repudiandae incidunt reiciendis eveniet explicabo!</p>
-                            </div>
-
-                            <div className="card w-500px m-w-12">
-                                <h4>Hello World</h4>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum eius enim nostrum, dolorum ex fuga facilis pariatur animi, tempore maiores esse dolor dolore sapiente quaerat repudiandae incidunt reiciendis eveniet explicabo!</p>
-                            </div>
-
-                        </div>
-
-                    </div> */}
 
 
                     <CarouselWrap>
@@ -231,14 +402,23 @@ function ComponentsPage() {
                     <h2>Maximised</h2>
 
                     <CarouselWrap maximised={true} >
-                        <div className="item bg dark h-200px " >
-                            <img src={Img_12} class="make-section-bg" />
+                        <div className="item bg dark " >
+                            {/* <img src={Img_12} class="make-section-bg" id="img-debug" /> */}
                             <div className="padding-large">
+                                <img src={Img_15} class="make-section-bg" alt="" />
+
 
                                 <h1>Nadpis</h1>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis facilis quasi minus quis nam perspiciatis hic repellat consequuntur commodi eligendi?</p>
                             </div>
                         </div>
+
+                        <div className="bg">
+                            <img src={Img_15} class="make-section-bg" alt="" />
+                            <h2>Ahojo dhasdk kjasda dhs</h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti nihil, esse consequuntur tempora corporis dolorem vel molestias doloremque ratione distinctio exercitationem repellendus dicta dolore cum tempore obcaecati pariatur illo laboriosam.</p>
+                        </div>
+
                         <div className="item bg">
                             <img src={Img_12} />
                         </div>
@@ -264,7 +444,7 @@ function ComponentsPage() {
             <div className="chips-section">
                 <div className="content">
                     <h1>Chips</h1>
-                    <div className="row">
+                    <div className="row subtle-scroll">
                         <input type="checkbox" id="idkkkasd" />
                         <label htmlFor="idkkkasd" class="chip primary">Ahoj</label>
                         <input type="checkbox" id="idkkkasd1" />
@@ -274,9 +454,13 @@ function ComponentsPage() {
                         <input type="checkbox" id="idkkkasd21" />
                         <label htmlFor="idkkkasd21" class="chip primary with-close">Ahoj</label>
                         <input type="checkbox" id="idkkkasd22" />
+                        <label htmlFor="idkkkasd2asd2" class="chip primary with-close">Ahoj</label>
+                        <input type="checkbox" id="idkkkasd2asd2" />
                         <label htmlFor="idkkkasd22" class="chip primary with-close">Ahoj</label>
+                        <input type="checkbox" id="idkkkasd2sad2" />
+                        <label htmlFor="idkkkasd2sad2" class="chip primary with-close">Ahoj</label>
                     </div>
-                    <div className="row">
+                    <div className="row subtle-scroll">
                         <input type="checkbox" id="ertert1" />
                         <label htmlFor="ertert1" class="chip">Ahoj</label>
                         <input type="checkbox" id="ertert12" />
@@ -285,6 +469,10 @@ function ComponentsPage() {
                         <label htmlFor="ertert13" class="chip with-close">Ahoj</label>
                         <input type="checkbox" id="ertert14" />
                         <label htmlFor="ertert14" class="chip with-close">Ahoj</label>
+                        <input type="checkbox" id="ertert15" />
+                        <label htmlFor="ertert15" class="chip with-close">Ahoj</label>
+                        <input type="checkbox" id="ertert15" />
+                        <label htmlFor="ertert15" class="chip with-close">Ahoj</label>
                         <input type="checkbox" id="ertert15" />
                         <label htmlFor="ertert15" class="chip with-close">Ahoj</label>
                     </div>
@@ -299,8 +487,8 @@ function ComponentsPage() {
                     {/* <iframe frameborder="0" ref={iframeRef}></iframe> */}
 
                     <iframe srcdoc="
-                    <h1>Sample</h1>
-                    " frameborder="0"></iframe>
+        <h1>Sample</h1>
+        " frameborder="0"></iframe>
 
 
                     <pre><code class="hljs css language-css">{"p {color: red }"}</code></pre>
@@ -311,7 +499,28 @@ function ComponentsPage() {
 
             <div className="dropdown-sections">
                 <div className="content">
+                    {/* Test of a button inside another button  */}
+                    <button class="secondary">
+                        Secondary
+                        {/* <button className="primary">
+                Primary inside secondary
+            </button> */}
+                    </button>
+
                     <h1>Dropdown</h1>
+
+                    <div className="new-dropdown">
+                        <button className="my-dropdown-button">
+                            New dropdown
+                        </button>
+                        <div className="new-dropdown-window">
+                            <p>Ahoj</p>
+                            <p>jkasjkasjkfg</p>
+                            <button>adsdggj</button>
+                        </div>
+                    </div>
+
+
 
                     <div className="dropdown">
                         <button className="dropdown-heading">Dropdown</button>
@@ -381,7 +590,7 @@ function ComponentsPage() {
                 </div>
             </div>
 
-            <div className="input-section padding-large">
+            <div className="input-section">
                 <div className="content">
                     <h1>Inputs</h1>
 
@@ -486,11 +695,26 @@ function ComponentsPage() {
                                 <br />
 
                                 <div className="input ">
-                                    <label htmlFor="oiwhodghvdohbi" class="">Range</label>
-                                    <input type="range" />
+                                    <label htmlFor="fdhasfuahiuafiugafh" class="">Velikost</label>
+                                    <select name="" id="fdhasfuahiuafiugafh">
+                                        <option value="das">01</option>
+                                        <option value="a">asd 02</option>
+                                        <option value="sad">lorem</option>
+                                        <option value="sads">ipsum</option>
+                                    </select>
+
+
                                     <label htmlFor="" className="sub">Vyberte, kterou chcete, stejně vám dovezeme tu malou</label>
 
 
+                                </div>
+
+                                <br />
+
+                                <div className="input ">
+                                    <label htmlFor="oiwhodghvdohbi" class="">Range</label>
+                                    <input type="range" />
+                                    <label htmlFor="" className="sub">Vyberte, kterou chcete, stejně vám dovezeme tu malou</label>
                                 </div>
 
 
@@ -536,6 +760,136 @@ function ComponentsPage() {
 
 
                 </div>
+            </div>
+
+            <div className="keyboard-input-section">
+                <div className="content">
+                    <h1>Keyboard input</h1>
+                    <p>Please press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to re-render an MDN page.</p>
+
+                </div>
+            </div>
+
+            <div className="example-section">
+                <div className="content">
+                    <h1>Example</h1>
+
+                    <div className="example">
+
+                        <div className="card layout max-w-500px">
+                            <div className="card-head ">
+                                <img src={Img_20} alt="" class="h-200px" />
+                            </div>
+                            <div className="card-body">
+                                <h4>Layout card</h4>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur laborum possimus dolore doloribus ipsa quo. Lorem ipsum dolor sit amet.</p>
+                            </div>
+                            <div className="card-footer row space-between">
+                                <p>Footer</p>
+
+                                <h3 className="g-icon hover-show">east</h3>
+                            </div>
+
+
+                        </div>
+                        <div className="card">
+                            <h4>Default card</h4>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, quaerat. Totam ab unde voluptatibus a ipsam molestiae!</p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div className="stepper-section">
+                <div className="content">
+
+                    <h1>Stepper - W.I.P.</h1>
+
+                    <h3>Row</h3>
+                    <ul className="stepper type-row">
+                        <li>
+                            <p className="stepper-a">1</p>
+                            <p className="stepper-b">Košík</p>
+                        </li>
+                        <hr />
+                        <li>
+                            <p className="stepper-a">2</p>
+                            <p className="stepper-b">Doprava</p>
+                        </li>
+                        <hr />
+                        <li class="active">
+                            <p className="stepper-a">3</p>
+                            <p className="stepper-b">Platba</p>
+                        </li>
+                        <hr />
+                        <li>
+                            <p className="stepper-a">4</p>
+                            <p className="stepper-b">Done</p>
+                        </li>
+                    </ul>
+
+                    <h3>Column</h3>
+                    <ul className="stepper type-column">
+                        <li>
+                            <p className="stepper-a"> <span class="icon">shop</span> </p>
+                            <p className="stepper-b">Košík</p>
+                        </li>
+                        <hr />
+                        <li>
+                            <p className="stepper-a"> <span class="icon">motorcycle</span> </p>
+
+                            <p className="stepper-b">Doprava</p>
+                        </li>
+                        <hr />
+                        <li class="active">
+                            <p className="stepper-a"> <span class="icon">money</span> </p>
+                            <p className="stepper-b">Platba</p>
+                        </li>
+                        <hr />
+                        <li>
+                            <p className="stepper-a">4</p>
+                            <p className="stepper-b">Hotovo</p>
+                        </li>
+                    </ul>
+
+                    <h3>Horizontal</h3>
+                    <ul className="stepper horizontal">
+                        <li>
+                            <div className="stepper-head">
+                                <p className="stepper-a">1</p>
+                                <p className="stepper-b">Košík</p>
+                            </div>
+                            <div className="stepper-body">
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates sequi id earum laboriosam omnis. Sequi ut optio doloribus numquam reprehenderit!</p>
+                            </div>
+                        </li>
+                        <li class="active">
+                            <div className="stepper-head">
+                                <p className="stepper-a">2</p>
+                                <p className="stepper-b">Doprava</p>
+                            </div>
+                            <div className="stepper-body">
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates sequi id earum laboriosam omnis. Sequi ut optio doloribus numquam reprehenderit!</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="stepper-head">
+                                <p className="stepper-a">3</p>
+                                <p className="stepper-b">Platba</p>
+                            </div>
+                            <div className="stepper-body">
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates sequi id earum laboriosam omnis. Sequi ut optio doloribus numquam reprehenderit!</p>
+                            </div>
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+
             </div>
 
             <div className="tabs-section">
@@ -594,7 +948,7 @@ function ComponentsPage() {
 
                         </div>
                         <div className="middle">
-                            <input type="text" class="editable" placeholder="FileName" name="ahoj" id="ahoj" />
+                            <input type="text" name="ahoj" id="ahoj" />
 
                         </div>
                         <div className="right">
@@ -795,9 +1149,6 @@ function ComponentsPage() {
                         </div>
                     </ModalWrap>
 
-
-
-
                 </div>
             </div>
 
@@ -826,7 +1177,7 @@ function ComponentsPage() {
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique molestias, provident quas sunt possimus quod soluta totam. Et quisquam tempora soluta voluptatem! Esse, cumque dicta nesciunt at sint ex provident! Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum optio et quaerat nemo nisi iure amet ipsa debitis accusamus ipsam molestiae, perspiciatis sunt, ducimus repellendus corporis? Sit et asperiores tempore.</p>
                 </div>
             </div>
-        </div>
+        </div >
 
     </>);
 }
