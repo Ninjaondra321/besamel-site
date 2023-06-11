@@ -10,8 +10,8 @@ import { Router, Routes, Route } from "@solidjs/router"
 import GenerateStyle from './Functions/GenerateStyle';
 
 // import '../Styles/style.css';
-import '../Styles/besamel_03.css';
-import '../Styles/component_styles.css';
+import '../Styles/besamel_04.css';
+import '../Styles/component_styles_02.css';
 
 
 
@@ -28,12 +28,15 @@ import logo from './logo.svg';
 // import ComponentsPage from './Pages/Components';
 
 const HomePage = lazy(() => import('./Pages/Homepage'));
-const NavBar = lazy(() => import('./Components/NavBar'));
-const Footer = lazy(() => import('./Components/Footer'));
+
 const CookiesPage = lazy(() => import('./Pages/CookiesPage'));
 
 
+
 // Components
+
+import NavBar from "./Components/NavBar";
+import Footer from "./Components/Footer";
 
 
 // Functions
@@ -62,7 +65,6 @@ function App() {
       c = JSON.parse(localStorage.getItem("COOKIES-NOTIME"));
     } catch (e) {
       console.log(e);
-
       c = { "analytical": false };
     }
     c[type] = value;
@@ -70,9 +72,10 @@ function App() {
   }
 
   createEffect(() => {
-    // Change language in html
     document.documentElement.lang = language();
   })
+
+
 
 
   return (
@@ -80,26 +83,26 @@ function App() {
 
       <GenerateStyle />
       <Router  >
-        <Redirecting supprotedLanguages={supprotedLanguages} />
-        <NavBar language={language} setLanguage={setLanguage} languages={supprotedLanguages} />
-        <div className="main ">
+        <Redirecting />
+        <NavBar />
+        <div className="main">
           <Routes >
-            <Route path="/" element={<HomePage language={language} />} />
-            <Route path="/docs" element={<Docs language={language} />} />
-            <Route path="/docs/*" element={<Docs language={language} />} />
-            <Route path="/examples" element={<Examples language={language} />} />
-            <Route path="/theme-creator" element={<ThemeCreator language={language} />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/docs/*" element={<Docs />} />
+            <Route path="/examples" element={<Examples />} />
+            <Route path="/theme-creator" element={<ThemeCreator />} />
 
             <Route path="/examples/components" element={<ComponentsPage language={language} />} />
             <Route path="/examples/sections" element={<Sections language={language} />} />
 
-            <Route path="/cookies" element={<CookiesPage language={language} />} />
+            <Route path="/cookies" element={<CookiesPage />} />
 
-            <Route path="*" element={<Page404 language={language} />} />
+            <Route path="*" element={<Page404 />} />
           </Routes>
 
         </div>
-        <Footer language={language} />
+        <Footer />
+
         <Cookies cookiesAllowed={analyticalCookiesAllowed} />
       </Router>
 

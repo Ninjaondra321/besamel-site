@@ -1,50 +1,14 @@
 import { createSignal, createEffect } from "solid-js";
 import { A } from "@solidjs/router";
-const dictionary = {
-    "home": {
-        "cs": "Domů",
-        "en": "Home",
-    },
-    "docs": {
-        "cs": "Dokumentace",
-        "en": "Docs",
-    },
-    "theme-creator": {
-        "cs": "Tvůrce motivů",
-        "en": "Theme creator",
-    },
-    "examples": {
-        "cs": "Ukázky",
-        "en": "Examples",
-    },
-    "versions": {
-        "cs": "Verze",
-        "en": "Versions",
-    },
-}
 
+function NavBar() {
 
-
-function NavBar({ language, setLanguage, languages }) {
-
-    console.log(dictionary)
-    console.log(dictionary["home"])
-
-    console.log(language())
 
     const [showBanner, setShowBanner] = createSignal(true);
     const [drawerShown, setDrawerShown] = createSignal(false);
-    // const [dictionary, setDictionary] = createSignal("translation_cs");
 
     function updateHeight(useLessProps = undefined) {
-        // Navbar height + banner height
-        if (showBanner()) {
-
-            document.documentElement.style.setProperty('--navbar-height', `${document.querySelector(".navbar").clientHeight + document.querySelector(".banner").clientHeight}px`);
-        } else {
-            document.documentElement.style.setProperty('--navbar-height', `${document.querySelector(".navbar").clientHeight}px`);
-        }
-
+        document.documentElement.style.setProperty('--navbar-height', `${document.querySelector("nav").clientHeight - 6}px`);
     }
 
 
@@ -52,11 +16,8 @@ function NavBar({ language, setLanguage, languages }) {
         updateHeight(showBanner());
     });
 
-
     return (<>
-
         <nav class='always-on-top '>
-
             {showBanner() &&
                 <div className="banner">
                     <div className="left">
@@ -65,7 +26,7 @@ function NavBar({ language, setLanguage, languages }) {
                         <header>Tahle stránka je zatím v development verzi - nemusí fungovat správně</header>
                     </div>
                     <div className="right row">
-                        <button className="icon-btn small " onClick={() => setShowBanner(false)}>
+                        <button className="icon-btn icon small " onClick={() => setShowBanner(false)} >
                             close
                         </button>
                     </div>
@@ -73,17 +34,14 @@ function NavBar({ language, setLanguage, languages }) {
             }
 
             <div className="navbar ">
-
                 <div className="left " style={{ padding: 0, height: "100%" }}>
-                    <A href="/#" end={true} style={{ padding: 0, height: "100%" }}>
-                        <header class="all-center" style={{ padding: 0, height: "100%", "font-size": "1.4rem" }}>
-                            <div className="row">
+                    <A href="/#" activeClass="" end={true} style={{ padding: 0, height: "100%" }}>
 
-                                <span className="icon" style={{ color: "var(--secondary-color)" }}>
-                                    bug_report
-                                </span>
-                                BEŠAMEL
-                            </div>
+                        <header class="center row" style={{ padding: 0, height: "100%", "font-size": "1.4rem" }}>
+                            <span className="icon" style={{ color: "var(--secondary-color)" }}>
+                                bug_report
+                            </span>
+                            BEŠAMEL
                         </header>
 
                     </A>
@@ -93,63 +51,47 @@ function NavBar({ language, setLanguage, languages }) {
 
                 <div className="right">
                     <div className="m-hidden">
-                        <A href={"/"} end={true}>{dictionary["home"][language()]}</A>
-                        <A href={"/docs"} > {dictionary["docs"][language()]} </A>
-                        <A href={"/examples"} > {dictionary["examples"][language()]} </A>
-                        <A href={"/theme-creator"}>{dictionary["theme-creator"][language()]}</A>
-                        <A href={"/versions"}>{dictionary["versions"][language()]}</A>
-                        <select name="language" id="language"
-                            value={language()}
-                            onChange={(e) => { setLanguage(e.target.value) }}
-                        >
-                            {languages.map((lang) =>
-                                <option value={lang}>{lang}</option>
-                            )}
-                        </select>
-
-                        <div className="dropdown">
-                            <p className="dropdown-heading">Dropdown</p>
-                            <div className="dropdown-window">
-                                <A href="/dropdown">Dropdown</A>
-                                <A href="/dropdown">Dropdown</A>
-                            </div>
-                        </div>
-
+                        <A href={"/"} end={true}>Home</A>
+                        <A href={"/docs"} > Docs </A>
+                        <A href={"/examples"} >Examples</A>
+                        <A href={"/theme-creator"}>Theme creator</A>
+                        <A href={"/versions"}>Versions</A>
                     </div>
                     <div className="pc-hidden">
-                        <button className="icon-btn large " style="margin-right:-15px" id="menu-opener" onclick={() => setDrawerShown(!drawerShown())}>
+                        <button className="icon-btn large " id="menu-opener" style="color:var(--secondary-color)" onclick={() => setDrawerShown(!drawerShown())}>
                             menu
                         </button>
                     </div>
                 </div>
 
             </div >
-            <div className={"nav-drawer fullscreen  bg" + (drawerShown() ? " opened" : " closed")}>
-                <div className="drawer-content to-left">
-                    <A href="/">Home</A>
-                    <A href="/abc">abc</A>
-                    <A href="/components">Components</A>
-                    <div className="accordion-plain">
-                        <div className="accordion-item closed center " >
+            <div className={"nav-drawer fullscreen center pos " + (drawerShown() ? " opened" : " closed")}>
+                <div className="drawer-content center " >
 
-                            <button className="accordion-header h4"
-                                onTouch={(e) => { e.target.parentElement.classList.toggle("closed"); }}
-                                onClick={(e) => { e.target.parentElement.classList.toggle("closed"); }}
-                            >
-                                Accordion
+                    <ul class="responsive">
+                        <li>
+                            <A href={"/"} end={true}>Home</A>
+                        </li>
+                        <li>
+                            <A href={"/docs"} > Docs </A>
+                        </li>
+                        <li>
+                            <A href={"/examples"} >Examples</A>
+                        </li>
+                        <li>
+                            <A href={"/theme-creator"}>Theme creator</A>
+                        </li>
+                        <li>
+                            <A href={"/versions"}>Versions</A>
+                        </li>
+                    </ul>
 
-                            </button>
-                            <div className="accordion-content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, sequi quaerat. Possimus hic, quaerat ut eos repellat sint minus doloremque beatae fuga mollitia nulla perferendis commodi quibusdam sequi? Saepe, est!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
+                <div className="to-s padding-large" style="height: fit-content !important;">
+                    <A href="https://github.com/Ninjaondra321/Besamel" class="">Github</A>
+                </div>
             </div>
-
-
 
 
         </nav >

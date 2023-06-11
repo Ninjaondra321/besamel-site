@@ -5,85 +5,41 @@ import { createSignal } from "solid-js";
 
 import { A } from "@solidjs/router";
 
-const fetchSidebar = async (language) => {
+const fetchSidebar = async () => {
     console.log("fetching sidebar")
-    const response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${language}/sidebar.json`);
+    const response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/sidebar.json`);
     const data = await response.text();
     return JSON.parse(data);
-
-    // const testFetchResult = [
-    //     {
-    //         "innerHTML": "Introduction",
-    //         "link": "/docs/introduction",
-    //         "children": [
-    //             {
-    //                 "innerHTML": "Sample link",
-    //                 "link": "docs/introduction/sample-link",
-    //             },
-    //             {
-    //                 "innerHTML": "Sample link 2",
-    //                 "link": "docs/introduction/sample-link-2",
-    //             }]
-    //     },
-    //     {
-    //         "innerHTML": "Components",
-    //         "link": "/docs/components",
-    //         "children": [
-    //             {
-    //                 "innerHTML": "Accordeon",
-    //                 "link": "docs/components/Accordeon",
-    //             },
-    //             {
-    //                 "innerHTML": "Badge",
-    //                 "link": "docs/components/Badges",
-    //             },
-    //             {
-    //                 "innerHTML": "Buttons",
-    //                 "link": "docs/components/Buttons",
-    //             },
-    //             {
-    //                 "innerHTML": "Cards",
-    //                 "link": "docs/components/cards",
-    //             },
-    //             {
-    //                 "innerHTML": "Carousels",
-    //                 "link": "docs/components/carousels",
-    //             },
-    //         ]
-    //     }
-    // ]
-
-    // console.log(testFetchResult)
-    // return testFetchResult;
 }
 
-function getPageUrl(language) {
+function getPageUrl() {
     const location = useLocation();
     console.log(location)
 
     let urlIdk = location.pathname
-    urlIdk = urlIdk.replace("/docs/", "")
+    urlIdk = urlIdk.replace("/en/", "").replace("/cs/", "").replace("docs/", "")
     console.log(urlIdk)
+    let output = `${urlIdk}.json`
+    console.log(output)
 
-    return `main/${language}/${urlIdk}.json`
+    return output;
 }
 
 
-const fetchPage = async (language) => {
-
+const fetchPage = async () => {
     const location = useLocation();
-    console.log(location)
 
     let urlIdk = location.pathname
-    urlIdk = urlIdk.replace("/docs/", "")
+    urlIdk = urlIdk.replace("docs/", "")
+
     console.log(urlIdk)
-    console.log(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${language}/${urlIdk}.json`)
+    console.log(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${urlIdk}.json`)
 
     let response;
     if (urlIdk === "/") {
-        response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${language}/index.json`);
+        response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/index.json`);
     } else {
-        response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/` + getPageUrl(language));
+        response = await fetch(`https://raw.githubusercontent.com/Ninjaondra321/besamel-docs/main/${urlIdk}.json`);
     }
 
     if (!response.ok) {
@@ -94,20 +50,15 @@ const fetchPage = async (language) => {
         }
     }
 
-    // Log the responses text
-    console.log(response)
     const data = await response.json();
-    console.log(data);
 
     let counter = 0;
-
 
     for (let i = 0; i < data.page.length; i++) {
         data.page[i].id = "docs-" + counter + "-id";
         counter++;
     }
 
-    console.log("data")
     console.log(data)
 
     return data;
@@ -117,8 +68,6 @@ function createRightSidebar(pageJSON) {
     let rightSidebar = []
 
     for (let i = 0; i < pageJSON.page.length; i++) {
-
-
 
         if (pageJSON.page[i].type === "h1") {
             rightSidebar.push({
@@ -142,7 +91,7 @@ function createRightSidebar(pageJSON) {
     return rightSidebar;
 }
 
-function Docs({ language }) {
+function Docs() {
 
     const location = useLocation();
 
@@ -155,8 +104,8 @@ function Docs({ language }) {
 
     var lastPage = "/"
 
-    const [sidebar, { mutate: ahoj, refetch: refetchSidebar }] = createResource(language(), fetchSidebar)
-    const [page, { mutate, refetch }] = createResource(language(), fetchPage)
+    const [sidebar, { mutate: ahoj, refetch: refetchSidebar }] = createResource(fetchSidebar)
+    const [page, { mutate, refetch }] = createResource(fetchPage)
     const [version, setVersion] = createSignal(undefined)
     const [rightSidebar, setRightSidebar] = createSignal([])
 
@@ -168,28 +117,8 @@ function Docs({ language }) {
         }
     })
 
-    // Reload the page when the language changes or the url changes
-    createEffect(() => {
-        console.log("language changed")
-        console.log(location)
-
-        if (location.pathname != lastPage) {
-            refetch()
-            lastPage = location.pathname
-        }
-    })
-
-    // Change sidebar every time lanugage changes
-    createEffect(() => {
-        console.log("language changed")
-        console.log(language())
-        refetchSidebar()
-        // sidebar.refetch()
-    })
-
     function changeVersion(version) {
         // The version is in the URL
-
         if (version == "latest") {
             setVersion("latest")
             window.history.pushState({}, "", location.pathname)
@@ -452,9 +381,9 @@ function Docs({ language }) {
 
             }
             <hr />
-            <ul>
+            <ul style="padding:0">
                 <li>
-                    <A href={"https://github.com/Ninjaondra321/besamel-docs/blob/main/" + getPageUrl(language)}>
+                    <A href={"https://github.com/Ninjaondra321/besamel-docs/blob/main/" + getPageUrl()}>
                         <span className="icon" style="    padding: 0;font-size:  inherit;}">edit</span>
                         Edit on GitHub
                     </A>
@@ -466,7 +395,7 @@ function Docs({ language }) {
                     </A>
                 </li>
                 <li>
-                    <A href="/ahoj">
+                    <A href="" activeClass="" onClick={() => print()}>
                         <span className="icon" style="    padding: 0;font-size:  inherit;}">print</span>
                         Print
                     </A>

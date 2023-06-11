@@ -26,6 +26,8 @@ function GenerateStyle() {
     var typography = ""
     var typography_mobile = ""
 
+    var pc = ""
+
     // TODO! add vertical and horizontal padding ?and margin?
 
     // TWELVES SYSTEM
@@ -34,6 +36,8 @@ function GenerateStyle() {
 
         w_i += `.w-${i}{width: ${twelves_system}%;}`
         m_w_i += `.m-w-${i}{width: ${twelves_system}%;}`
+
+        pc += `.pc-w-${i}{width: ${twelves_system}%;}`
     }
 
     // PIXELS SYSTEM
@@ -41,9 +45,19 @@ function GenerateStyle() {
         let pixels = i * 50
 
         w_i_px += `.w-${pixels}px{width: ${pixels}px;}`
+
+        // Ať nemám tolik proměnných
+        w_i_px += `.max-w-${pixels}px{max-width: ${pixels}px;}`
+
+
         m_w_i_px += `.m-w-${pixels}px{width: ${pixels}px;}`
 
         h_i_px += `.h-${pixels}px{height: ${pixels}px;}`
+
+        h_i_px += `.min-h-${pixels}px{min-height: ${pixels}px;}`
+        h_i_px += `.min-w-${pixels}px{min-width: ${pixels}px;}`
+
+
         m_h_i_px += `.m-h-${pixels}px{height: ${pixels}px;}`
     }
 
@@ -92,6 +106,11 @@ function GenerateStyle() {
                     ${m_h_i_vh}
                     ${m_padding_size}
                     ${m_margin_size}
+            }`}
+            {`
+            @media only screen and (min-width: 768px) {
+                ${pc}
+                    
             }`}
 
 

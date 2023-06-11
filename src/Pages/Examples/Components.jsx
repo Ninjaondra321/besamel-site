@@ -6,6 +6,8 @@ import { createSignal, onMount } from "solid-js";
 
 import Img_12 from "../../Imgs/pasta.jpg"
 
+import Joiner from "../../Imgs/join.png";
+
 import CarouselWrap from "../../Components/Carousels";
 
 import Accordion from "../../Components/Accordion";
@@ -50,13 +52,12 @@ function ComponentsPage() {
             <div className="utilities">
                 <div className="content">
                     <h1>Utilities</h1>
-                    <h1>Utilities</h1>
 
                     <div className="row">
 
 
                         <div className="card hover bg w-4 h-200px dark pos-sw">
-                            <img src={Img_20} alt="Img_20" id="debug" class="make-section-bg" />
+                            <img src={Img_12} alt="Img_12" align="r" id="debug" class="make-section-bg" />
 
                             <div className="hover-show column pos-e">
                                 <h4 className="">Hovered</h4>
@@ -69,7 +70,7 @@ function ComponentsPage() {
 
                         </div>
                         <div className="card hover bg w-4 h-200px dark pos-s">
-                            <img src={Img_20} alt="Img_20" id="debug" class="make-section-bg" />
+                            <img src={Img_12} alt="Img_12" id="debug" class="make-section-bg" />
                             <div className="hover-show column">
                                 <h4 className="">Hovered</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
@@ -88,7 +89,7 @@ function ComponentsPage() {
             </div>
 
             <div className="position-section bg">
-                <img src={Img_1} class="make-section-bg to-w to-left" alt="" />
+                <img src={Img_12} class="make-section-bg to-n" alt="" />
                 <div className="content">
                     <h1>Position</h1>
 
@@ -167,20 +168,20 @@ function ComponentsPage() {
                         </div>
                         <div className="card h-200px w-2 hover pos ">
                             <div className="to-se">
-                                <h4 class="hover-hide"><span class="icon">south_west</span></h4>
+                                <h4 class="hover-hide"><span class="icon">south_east</span></h4>
                                 <h4 class="hover-show">To south west</h4>
                             </div>
                         </div>
 
                         <div className="card h-200px w-2 hover pos ">
                             <div className="to-nw">
-                                <h4 class="hover-hide"><span class="icon">south_west</span></h4>
+                                <h4 class="hover-hide"><span class="icon">north_west</span></h4>
                                 <h4 class="hover-show">To south west</h4>
                             </div>
                         </div>
                         <div className="card h-200px w-2 hover pos ">
                             <div className="to-ne">
-                                <h4 class="hover-hide"><span class="icon">south_west</span></h4>
+                                <h4 class="hover-hide"><span class="icon">north_east</span></h4>
                                 <h4 class="hover-show">To south west</h4>
                             </div>
                         </div>
@@ -244,6 +245,25 @@ function ComponentsPage() {
                 <div className="content">
 
                     <h1>Buttons</h1>
+                    <div className="banner">
+
+                        <div className="left">
+                        </div>
+                        <div className="center">
+                            <header>Nové menu najdete <a href="#">zde</a>
+
+                            </header>
+                        </div>
+
+                        <div className="right">
+
+                            <button className="icon small " >
+                                close
+                            </button>
+                        </div>
+
+                    </div>
+
                     <div className="padding row subtle-scroll" >
                         <button className="primary">Hello Word</button>
                         <button className="secondary">Lorem ipsum</button>
@@ -311,7 +331,7 @@ function ComponentsPage() {
                     <div className="row">
                         <div className="card layout hover primary w-4">
                             <div className="card-head">
-                                <img src={Img_20} alt="" />
+                                <img src={Img_12} alt="" />
                             </div>
                             <div className="card-body">
                                 <h4>Layout card</h4>
@@ -327,7 +347,7 @@ function ComponentsPage() {
 
                         <div className="card layout hover w-4">
                             <div className="card-head">
-                                <img src={Img_20} alt="" />
+                                <img src={Img_12} alt="" />
                             </div>
                             <div className="card-body">
                                 <h4>Layout card</h4>
@@ -405,7 +425,7 @@ function ComponentsPage() {
                         <div className="item bg dark " >
                             {/* <img src={Img_12} class="make-section-bg" id="img-debug" /> */}
                             <div className="padding-large">
-                                <img src={Img_15} class="make-section-bg" alt="" />
+                                <img src={Img_12} class="make-section-bg" alt="" />
 
 
                                 <h1>Nadpis</h1>
@@ -414,7 +434,7 @@ function ComponentsPage() {
                         </div>
 
                         <div className="bg">
-                            <img src={Img_15} class="make-section-bg" alt="" />
+                            <img src={Img_12} class="make-section-bg" alt="" />
                             <h2>Ahojo dhasdk kjasda dhs</h2>
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti nihil, esse consequuntur tempora corporis dolorem vel molestias doloremque ratione distinctio exercitationem repellendus dicta dolore cum tempore obcaecati pariatur illo laboriosam.</p>
                         </div>
@@ -507,24 +527,65 @@ function ComponentsPage() {
             </button> */}
                     </button>
 
-                    <h1>Dropdown</h1>
+                    <h1 id="dropdown"> Dropdown</h1>
+                    {/* 
+        <div className="dropdown">
+            <button className="dropdown-button"
+                onClick={(e) => {
+                    e.currentTarget.parentElement.classList.toggle("open");
 
-                    <div className="new-dropdown">
-                        <button className="my-dropdown-button">
-                            New dropdown
-                        </button>
-                        <div className="new-dropdown-window">
-                            <p>Ahoj</p>
-                            <p>jkasjkasjkfg</p>
-                            <button>adsdggj</button>
-                        </div>
-                    </div>
+                
+                        //   // Create an event listener that closes the dropdown when clicked outside
+                        // document.addEventListener("click", (e) => {
+                        //     if (e.target.closest(".dropdown") !== null) {
+                        //         console.log("clicked inside");
+                        //         console.log(e.target.closest(".dropdown"));
+                        //         e.target.classList.toggle("open");
+                        //     } else {
+                        //         console.log("clicked outside");
+                        //         console.log(e.target);
+                        //         // console.log(e.target)
+                        //         // e.currentTarget.parentElement.classList.remove("open");
+                        //         console.log(e);
+                        //         // Remove the event listener
+                        //         document.removeEventListener("click", () => { });
+                        //     }
+                        // }
+                        // );
+
+
+                }}
+
+            >
+                New dropdown
+            </button>
+            <div className="dropdown-window">
+                <p>Ahoj</p>
+                <p>jkasjkasjkfg</p>
+                <button>adsdggj</button>
+            </div>
+        </div> */}
 
 
 
                     <div className="dropdown">
-                        <button className="dropdown-heading">Dropdown</button>
-                        <div className="dropdown-window">
+                        <button className="dropdown-button"
+
+                            onClick={(e) => {
+
+
+
+
+
+                                e.currentTarget.parentElement.classList.toggle("open");
+                            }
+                            }
+                        >
+
+                            Dropdown</button>
+                        <div className="dropdown-window"
+
+                        >
                             <a href="#">Link 1</a>
                             <a href="#">Link 2</a>
                             <hr />
@@ -608,13 +669,13 @@ function ComponentsPage() {
                                         <div className="tooltip">
                                             *
                                             <div className="tooltip-window top">
-                                                Musí být vyplněno
+                                                Musí být vyplněno <span className="icon">cookie</span>
                                             </div>
 
                                         </div>
                                     </label>
                                     <input type="text" name="Hello" id="123654" placeholder="Hovno v koši" />
-                                    <label htmlFor="123654" class="sub" >Heslo musí obsahovat alespoň jednu číslici</label>
+                                    <label htmlFor="123654" class="sub" >Heslo musí obsahovat  <span className="icon">cookie</span> alespoň jednu číslici</label>
                                     <label htmlFor="123654" class="sub" >Heslo musí obsahovat alespoň sedmncáct trpaslíků</label>
                                 </div>
 
@@ -624,8 +685,8 @@ function ComponentsPage() {
 
                                 <div className="input ">
                                     {/* <label htmlFor="akfjsgafkjgh" class="">Input</label> */}
-                                    <span className="icon">search</span>
-                                    <span className="icon right">cookie</span>
+                                    <span className="input-icon  ">search</span>
+                                    <span className="input-icon  right">cookie</span>
                                     <input type="text" name="Hello" id="akfjsgafkjgh" placeholder="Hovno v koši" />
                                     <label htmlFor="akfjsgafkjgh" class="sub" >Heslo musí obsahovat alespoň jednu číslici</label>
                                     <label htmlFor="akfjsgafkjgh" class="sub" >Heslo musí obsahovat alespoň sedmncáct trpaslíků</label>
@@ -633,7 +694,7 @@ function ComponentsPage() {
                                 <div className="padding"></div>
                                 <div className="input">
                                     <label htmlFor="akfjsgafkjgh" class="">Input</label>
-                                    <span className="icon">search</span>
+                                    <span className="input-icon">search</span>
                                     <input type="text" name="Hello" id="akfjsgafkjgh" placeholder="Hovno v koši" />
                                     <label htmlFor="akfjsgafkjgh" class="sub danger" >Heslo musí obsahovat alespoň jednu číslici</label>
                                     <label htmlFor="akfjsgafkjgh" class="sub success" >Heslo musí obsahovat alespoň sedmncáct trpaslíků</label>
@@ -644,7 +705,7 @@ function ComponentsPage() {
 
                                 <div className="input danger">
                                     <label htmlFor="eaihfagoivgoghai" class="">Input</label>
-                                    <span className="icon">search</span>
+                                    <span className="input-icon">search</span>
                                     <input type="text" name="Hello" id="eaihfagoivgoghai" placeholder="Hovno v koši" />
                                     <label htmlFor="eaihfagoivgoghai" class="sub" >Heslo musí obsahovat alespoň jednu číslici</label>
                                     <label htmlFor="eaihfagoivgoghai" class="sub" >Heslo musí obsahovat alespoň sedmncáct trpaslíků</label>
@@ -652,7 +713,7 @@ function ComponentsPage() {
                                 <div className="padding"></div>
                                 <div className="input success">
                                     <label htmlFor="oiwhodghvdohbi" class="">Input</label>
-                                    <span className="icon">search</span>
+                                    <span className="input-icon">search</span>
                                     <input type="text" name="Hello" id="oiwhodghvdohbi" placeholder="Hovno v koši" />
                                     <label htmlFor="oiwhodghvdohbi" class="sub" >Heslo musí obsahovat alespoň jednu číslici</label>
                                     <label htmlFor="oiwhodghvdohbi" class="sub" >Heslo musí obsahovat alespoň sedmncáct trpaslíků</label>
@@ -774,11 +835,11 @@ function ComponentsPage() {
                 <div className="content">
                     <h1>Example</h1>
 
-                    <div className="example">
+                    <div className="example-window">
 
                         <div className="card layout max-w-500px">
                             <div className="card-head ">
-                                <img src={Img_20} alt="" class="h-200px" />
+                                <img src={Img_12} alt="" class="h-200px" />
                             </div>
                             <div className="card-body">
                                 <h4>Layout card</h4>
@@ -1149,6 +1210,9 @@ function ComponentsPage() {
                         </div>
                     </ModalWrap>
 
+
+
+
                 </div>
             </div>
 
@@ -1178,7 +1242,6 @@ function ComponentsPage() {
                 </div>
             </div>
         </div >
-
     </>);
 }
 
