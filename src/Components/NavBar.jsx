@@ -1,5 +1,7 @@
 import { createSignal, createEffect } from "solid-js";
-import { A } from "@solidjs/router";
+import { A, useNavigate } from "@solidjs/router";
+
+import Icon from "../assets/besamel-icon.svg"
 
 function NavBar() {
 
@@ -15,6 +17,18 @@ function NavBar() {
     createEffect(() => {
         updateHeight(showBanner());
     });
+
+    const navigate = useNavigate();
+
+    function myRedirect(url) {
+        // CLose the drawer
+        setDrawerShown(false);
+
+        // Redirect
+        navigate(url);
+
+
+    }
 
     return (<>
         <nav class='always-on-top '>
@@ -38,9 +52,10 @@ function NavBar() {
                     <A href="/#" activeClass="" end={true} style={{ padding: 0, height: "100%" }}>
 
                         <header class="center row" style={{ padding: 0, height: "100%", "font-size": "1.4rem" }}>
-                            <span className="icon" style={{ color: "var(--secondary-color)" }}>
+                            {/* <span className="icon" style={{ color: "var(--secondary-color)" }}>
                                 bug_report
-                            </span>
+                            </span> */}
+                            <img src={Icon} alt="" />
                             BEŠAMEL
                         </header>
 
@@ -51,7 +66,8 @@ function NavBar() {
 
                 <div className="right">
                     <div className="m-hidden">
-                        <A href={"/"} end={true}>Home</A>
+
+                        <A href={"#"} end={true}>Home</A>
                         <A href={"/docs"} > Docs </A>
                         <A href={"/examples"} >Examples</A>
                         <A href={"/theme-creator"}>Theme creator</A>
@@ -70,10 +86,10 @@ function NavBar() {
 
                     <ul class="responsive">
                         <li>
-                            <A href={"/"} end={true}>Home</A>
+                            <A href={"/"} onclick={() => myRedirect("/")} end={true}>Home</A>
                         </li>
                         <li>
-                            <A href={"/docs"} > Docs </A>
+                            <A href={"/docs"} onclick={() => myRedirect("/docs")} > Docs </A>
                         </li>
                         <li>
                             <A href={"/examples"} >Examples</A>

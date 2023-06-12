@@ -142,13 +142,13 @@ function HomePage() {
             `}
         ></div>
 
-        <div className="change-theme-section">
+        <div className="change-theme-section min-h-500px">
             <div className="content">
                 <div className="row w-12 responsive-rotate">
                     <div className="left pc-w-6 center">
-                        <h2 className="responsive display">Neskutečně <span></span>
-                            <u>upravitelné</u>
-                            !
+                        <h2 className="responsive display">Extremely <span></span>
+                            <u>customisible</u>
+
                         </h2>
                         <p>
                             BESAMEL is basicly composed of 3 files:  <i> besamel.css</i> for layout, <i>generated.js</i> for generated classes such as .m-w-200px and last but not least <i>styles.css</i> for your design. This approach allows you to create perfect styles very easily. Try some of those out <span className="icon">east</span>
@@ -167,9 +167,9 @@ function HomePage() {
             </div>
         </div>
 
-        <div className="padding-large"></div>
+        {/* <div className="padding-large"></div> */}
 
-        <div className="comparation-section">
+        <div className="comparation-section min-h-500px">
             <style>
                 {`
                 .comparation>div p {
@@ -228,10 +228,10 @@ function HomePage() {
             </div>
         </div>
 
-        <div className="padding-large"></div>
+        {/* <div className="padding-large"></div> */}
 
 
-        <div className="easy-to-use-section">
+        <div className="easy-to-use-section min-h-500px">
             <div className="content">
                 <h2>EASY TO USE SECTION</h2>
                 <h3>WORK IN PROGRESSSS....</h3>

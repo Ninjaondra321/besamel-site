@@ -4,6 +4,7 @@ import { createEffect, createResource, onMount } from "solid-js";
 import { createSignal } from "solid-js";
 
 import { A } from "@solidjs/router";
+import CodeSample from "../Components/CodeSample";
 
 const fetchSidebar = async () => {
     console.log("fetching sidebar")
@@ -102,18 +103,28 @@ function Docs() {
         hljs.highlightAll()
     }
 
-    var lastPage = "/"
 
     const [sidebar, { mutate: ahoj, refetch: refetchSidebar }] = createResource(fetchSidebar)
     const [page, { mutate, refetch }] = createResource(fetchPage)
     const [version, setVersion] = createSignal(undefined)
     const [rightSidebar, setRightSidebar] = createSignal([])
 
+    const [lastUrl, setLastUrl] = createSignal(location.pathname)
+
     // Load the right sidebar every time the page changes
     createEffect(() => {
         if (page.state === "ready") {
             console.log(page())
             setRightSidebar(createRightSidebar(page()))
+        }
+    })
+
+    createEffect(() => {
+        console.log("page changed")
+        console.log(page())
+        if (lastUrl() !== location.pathname) {
+            refetch()
+            setLastUrl(location.pathname)
         }
     })
 
@@ -132,7 +143,13 @@ function Docs() {
     }
 
     createEffect(() => {
-        changeVersion(location.searchParams.get("v") || "latest")
+        try {
+
+            changeVersion(location.searchParams.get("v") || "latest")
+        } catch (error) {
+            console.log(error)
+        }
+
     })
 
 
@@ -311,15 +328,17 @@ function Docs() {
                                         return <iframe id={item.id} srcdoc={item.innerHtml}></iframe>
                                     case "code":
                                         return <>
-                                            {console.log(item)}
+                                            {/* {console.log(item)}
                                             {item.sample &&
                                                 <div className="example" innerHTML={item.innerHtml}>
                                                 </div>
-                                            }
+                                            } */}
 
-                                            <div className="w-12">
+                                            <CodeSample language={item.language} code={item.innerHtml} type={item.type} />
+
+                                            {/* <div className="w-12">
                                                 <pre><code id={item.id} onclick={hljs.highlightAll} class={`hljs ${item.language} language-${item.language}`}>{item.innerHtml}</code>  </pre>
-                                            </div>
+                                            </div> */}
                                         </>
 
 

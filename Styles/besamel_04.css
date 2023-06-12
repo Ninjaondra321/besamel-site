@@ -409,6 +409,17 @@ ul.plain {
 }
 
 
+
+/* * 2.8 Text position */
+.txt-l {
+    text-align: left;
+}
+
+.txt-r {
+    text-align: right;
+}
+
+
 /* * 3 TYPOGRAPHY */
 /* TODO? Nechat to takhle? */
 .icon,
@@ -509,7 +520,7 @@ h1.responsive-heading {
 
 h2.responsive,
 h2.responsive-heading {
-    font-size: clamp(1.25rem, calc(2rem * var(--font-multiplier) + var(--font-responsivness) * 0.8), 5.5rem);
+    font-size: clamp(1.25rem, calc(2rem * var(--font-multiplier) + var(--font-responsivness) * 0.75), 5.5rem);
 }
 
 h3.responsive,
@@ -1603,4 +1614,8 @@ table td {
 ul a.active {
     color: var(--primary-color);
     font-weight: bold;
+}
+
+.sidebar a {
+    width: 100%;
 }
