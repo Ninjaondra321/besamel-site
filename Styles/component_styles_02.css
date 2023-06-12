@@ -497,6 +497,28 @@ label.sub.success {
     color: var(--success-color);
 }
 
+input[type="checkbox"]+label::before,
+input[type="radio"]+label::before {
+    /* shape and stuff edited in besamel_??.css*/
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+input[type="checkbox"]:checked+label::after {
+    color: var(--font-color-light);
+    animation: check 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+input[type="radio"]:checked+label::after {
+    background: var(--font-color-light);
+}
+
+
+input[type="checkbox"]:disabled+label,
+input[type="radio"]:disabled+label {
+    filter: grayscale(100%) brightness(2);
+    cursor: default;
+}
 
 /* * 1.20 Navbar and subs */
 
@@ -521,7 +543,9 @@ nav {
 
     /* border-bottom: #f3ef1a 2px solid; */
     background:
-        radial-gradient(circle at 50% 50%, var(--secondary-color) 0%, transparent 80%);
+        /* radial-gradient(circle at 50% 50%, var(--secondary-color) 0%, transparent 80%); */
+        /* Linear gradient from transparent to secondary color and back */
+        linear-gradient(90deg, transparent 0%, var(--secondary-color) 30%, var(--secondary-color) 70%, transparent 100%);
 
 
 
@@ -613,4 +637,8 @@ textarea::-webkit-scrollbar-thumb:hover,
 
 .sidebar li a.active {
     color: var(--primary-color) !important;
+}
+
+footer {
+    background: linear-gradient(0deg, var(--secondary-color) 0%, var(--secondary-color-muted) 100%);
 }

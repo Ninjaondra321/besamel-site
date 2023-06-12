@@ -1,7 +1,7 @@
 import { createSignal, createEffect } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
 
-import Icon from "../assets/besamel-icon.svg"
+import Icon from "../assets/besamel-siluette.png"
 
 function NavBar() {
 
@@ -55,7 +55,7 @@ function NavBar() {
                             {/* <span className="icon" style={{ color: "var(--secondary-color)" }}>
                                 bug_report
                             </span> */}
-                            <img src={Icon} alt="" />
+                            <img src={Icon} alt="" style="transform: scale(0.85);" />
                             BEŠAMEL
                         </header>
 
@@ -71,7 +71,6 @@ function NavBar() {
                         <A href={"/docs"} > Docs </A>
                         <A href={"/examples"} >Examples</A>
                         <A href={"/theme-creator"}>Theme creator</A>
-                        <A href={"/versions"}>Versions</A>
                     </div>
                     <div className="pc-hidden">
                         <button className="icon-btn large " id="menu-opener" style="color:var(--secondary-color)" onclick={() => setDrawerShown(!drawerShown())}>
@@ -96,9 +95,6 @@ function NavBar() {
                         </li>
                         <li>
                             <A href={"/theme-creator"}>Theme creator</A>
-                        </li>
-                        <li>
-                            <A href={"/versions"}>Versions</A>
                         </li>
                     </ul>
 

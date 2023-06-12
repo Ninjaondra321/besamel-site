@@ -7,7 +7,17 @@ import { createSignal } from "solid-js";
 import { A } from "@solidjs/router";
 
 function HomePage() {
-    document.title = "A new title";
+    // SEO
+    document.title = "BESAMEL | Home";
+
+    var meta = document.getElementsByTagName("meta");
+    for (var i = 0; i < meta.length; i++) {
+        if (meta[i].name.toLowerCase() == "description") {
+            meta[i].content = "BESAMEL is an awesome CSS framework designed to be responsive, lightweight, customizable and easy to use. It's also open source and free to use!";
+        }
+    }
+
+
 
     const [theme, setTheme] = createSignal("default");
 
@@ -18,10 +28,8 @@ function HomePage() {
 
     function changeTheme(theme) {
 
-        // if theme in themes
         if (theme in themes) {
             setTheme(theme);
-            // document.documentElement.style.cssText = themes[theme];
         }
     }
 
@@ -142,7 +150,7 @@ function HomePage() {
             `}
         ></div>
 
-        <div className="change-theme-section min-h-500px">
+        <div className="change-theme-section min-h-400px">
             <div className="content">
                 <div className="row w-12 responsive-rotate">
                     <div className="left pc-w-6 center">
@@ -271,6 +279,10 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
+
+                <h3>Backgrounds</h3>
+
+
 
             </div>
         </div>

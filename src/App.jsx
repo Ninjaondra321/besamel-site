@@ -49,31 +49,39 @@ import Redirecting from "./Functions/Redirecting";
 import ComponentsPage from "./Pages/Examples/Components";
 import Sections from "./Pages/Examples/Sections";
 
-const supprotedLanguages = ["cs", "en"];
+const cookiesLocation = "COOKIES-BESAMEL-DOCS";
+
 
 function App() {
 
-  const [analyticalCookiesAllowed, setAnalyticalCookiesAllowed] = createSignal(false);
-
-  const [language, setLanguage] = createSignal("cs");
-
-
+  const [analyticalCookiesAllowed, setAnalyticalCookiesAllowed] = createSignal(null);
 
   function setCookies(type, value) {
-    let c;
-    try {
-      c = JSON.parse(localStorage.getItem("COOKIES-NOTIME"));
-    } catch (e) {
-      console.log(e);
-      c = { "analytical": false };
-    }
+    let c = JSON.parse(localStorage.getItem(cookiesLocation));
     c[type] = value;
-    localStorage.setItem("COOKIES-NOTIME", JSON.stringify(c));
+    if (type === "analytical") {
+      setAnalyticalCookiesAllowed(value);
+    } else {
+      console.error("Unknown cookie type");
+    }
+    localStorage.setItem(cookiesLocation, JSON.stringify(c));
   }
 
-  createEffect(() => {
-    document.documentElement.lang = language();
+
+  onMount(() => {
+    try {
+      let c = JSON.parse(localStorage.getItem(cookiesLocation));
+      setAnalyticalCookiesAllowed(c["analytical"]);
+      console.log("Cookies loaded");
+      console.log(c);
+    } catch (e) {
+      console.log(e);
+      localStorage.setItem(cookiesLocation, JSON.stringify({ "analytical": undefined }));
+      setAnalyticalCookiesAllowed(undefined);
+    }
+
   })
+
 
 
 
@@ -92,10 +100,10 @@ function App() {
             <Route path="/examples" element={<Examples />} />
             <Route path="/theme-creator" element={<ThemeCreator />} />
 
-            <Route path="/examples/components" element={<ComponentsPage language={language} />} />
-            <Route path="/examples/sections" element={<Sections language={language} />} />
+            <Route path="/examples/components" element={<ComponentsPage />} />
+            <Route path="/examples/sections" element={<Sections />} />
 
-            <Route path="/cookies" element={<CookiesPage />} />
+            <Route path="/cookies" element={<CookiesPage setCookies={setCookies} analyticalCookiesAllowed={analyticalCookiesAllowed} />} />
 
             <Route path="*" element={<Page404 />} />
           </Routes>
@@ -103,7 +111,7 @@ function App() {
         </div>
         <Footer />
 
-        <Cookies cookiesAllowed={analyticalCookiesAllowed} />
+        <Cookies cookiesAllowed={analyticalCookiesAllowed} setCookies={setCookies} />
       </Router>
 
 

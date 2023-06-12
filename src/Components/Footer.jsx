@@ -54,33 +54,38 @@ function Footer() {
             </div>
         </footer> */}
 
+        <footer class="center column ">
+            <div className="content">
 
-        <footer className="boruvka">
-            <div className="center responsive-rotate">
-                <A href="/">Domů</A>
-                <A href="/">Kariéra</A>
-                <A href="/">Kontakt</A>
+                <h4>Bešamel</h4>
+                <p></p>
+
+                <ul className="responsive ">
+                    <li><A href="/" end> Home</A></li>
+                    <li><A href="/docs"> Docs</A></li>
+                    <li><A href="/examples"> Examples</A></li>
+                    <li><A href="/theme-creator">  Theme creator</A></li>
+                </ul>
+                <div className="padding-small"></div>
+                <ul className="responsive space-evenly  ">
+                    <li><A href="https://github.com/Ninjaondra321"> GitHub</A></li>
+                    <li><A href="/404"> Instagram</A></li>
+
+                </ul>
+
+
+
+                <div className="pos-w w-12">
+                    <ul className="plain row">
+                        <li><A href="/sitemap.xml">Sitemap</A></li>
+                        <li><A href="/cookies">Cookies</A></li>
+                    </ul>
+                </div>
+
             </div>
 
-            <div className="center row ">
-                <A href="/"><span class="g-icon">facebook</span></A>
-                <A href="/"><span class="g-icon">expand</span></A>
-                {/* <A href="/"><span class="g-icon">instagram</span></A> */}
-                <A href="/"><span class="g-icon">phone</span></A>
-                <A href="/"><span class="g-icon">mail</span></A>
-            </div>
-            <div className="row space-between last-line ">
-                <div className="row">
-                    <A href="/sitemap">Sitemap</A>
-                    <A href="/cookies">Cookies</A>
-                </div>
-                <div className="row ">
-                    <p>
-                        © 2023 Všechna práva vyhrazena.
-                    </p>
-                </div>
-            </div>
         </footer>
+
 
 
 

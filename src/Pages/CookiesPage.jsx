@@ -4,44 +4,8 @@ import { createSignal, onMount } from "solid-js";
 
 
 
-function CookiesPage() {
-
-    const [analyticalCookiesAllowed, setAnalyticalCookiesAllowed] = createSignal(false);
-
-    function getCookie() {
-        try {
-            localStorage.getItem("COOKIES-NOTIME");
-
-            let c = JSON.parse(localStorage.getItem("COOKIES-NOTIME"));
-
-            console.log(c);
-            console.log(c["analytical"]);
-            setAnalyticalCookiesAllowed(c["analytical"]);
-        } catch (e) {
-            console.log(e);
-            setAnalyticalCookiesAllowed(false);
-            localStorage.setItem("COOKIES-NOTIME", JSON.stringify({ "analytical": false }));
-        }
-    }
-
-
-
-    function setCookies(type, value) {
-        let c;
-        try {
-            c = JSON.parse(localStorage.getItem("COOKIES-NOTIME"));
-        } catch (e) {
-            console.log(e);
-
-            c = { "analytical": false };
-        }
-        c[type] = value;
-        localStorage.setItem("COOKIES-NOTIME", JSON.stringify(c));
-    }
-
-    onMount(() => {
-        getCookie();
-    });
+function CookiesPage({ analyticalCookiesAllowed, setAnalyticalCookiesAllowed, getCookie }) {
+    document.title = "BESAMEL | Cookies";
 
 
     return (<>
@@ -60,11 +24,12 @@ function CookiesPage() {
 
                             <input type="checkbox" id="cookies-checkbox-technicke" checked disabled />
                             <label htmlFor="cookies-checkbox-technicke">
-                                <h2 >Technické</h2>
+                                <h2 >Technical</h2>
                             </label>
                         </div>
                         <p>
-                            Pomocí těchto cookies můžeme sledovat např. návštěvnost webu, délku prohlížení a další statistické informace. Díky nim Vám můžeme poskytovat ještě lepší weby. Můžou obsahovat i cookies třetích stran.
+                            Technical cookies are necessary for the website to function properly. They are usually set in response to actions you take on the website, such as setting your privacy preferences, logging in, or filling out forms.
+
                         </p>
 
                     </div>
@@ -77,9 +42,11 @@ function CookiesPage() {
                                 <h2 >Analytické</h2>
                             </label>
                         </div>
-
                         <p>
-                            Tento typ cookies nám pomáhá zlepšovat naše webové stránky a služby. Pomáhají nám pochopit, jak naše webové stránky a služby jsou používány a pomáhají nám zlepšovat jejich funkčnost a uživatelské zkušenosti.
+                            Analytical cookies help us improve our website by collecting and reporting information about its use.
+                        </p>
+                        <p>
+                            3rd party cookies: MS Clarity (find more in <a target="blank" href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-data">their website</a>)
                         </p>
 
                     </div>
@@ -93,7 +60,8 @@ function CookiesPage() {
                         </div>
 
                         <p>
-                            Marketingové cookies nepoužíváme                        </p>
+                            No marketing cookies are used
+                        </p>
 
                     </div>
                 </div>

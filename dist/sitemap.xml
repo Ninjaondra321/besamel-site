@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+ <url>
+    <loc>https://besamelsite-test.000webhostapp.com/</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+</url>
+
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+
+</url>
+
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/examples</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/examples/sections</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/theme-creator</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+</url>
+
+
+
+
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/examples/components</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+</url>
+
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/accordion</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/badges</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/banner</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/buttons</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/cards</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/carousels</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/Chips</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/Dropdown</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/horizontal-ruler</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/inputs</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/Klávesy</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/leaders</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/navbar</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/tables</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/text</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/tiles</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/components/toolbar</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/introduction/co-je-besamel</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/introduction/stahnuti</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/introduction/tvorba-designu</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/principy/01_Page layout</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/principy/02_Containers</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/principy/03_Background</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/principy/04_Design</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://besamelsite-test.000webhostapp.com/docs/principy/04_Responsiveness</loc>
+    <lastmod>2023-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+
+</urlset>

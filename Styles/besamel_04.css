@@ -428,9 +428,10 @@ ul.plain {
     font-family: 'Material Icons';
     background-color: transparent;
     border: none;
-    color: var(--font-color);
+    color: inherit;
     /* padding: 10px 10px; */
     font-size: calc(1.50rem * var(--font-multiplier));
+    padding-right: 5px;
 
 }
 
@@ -514,13 +515,11 @@ h1.responsive,
 h1.responsive-heading {
     font-size:
         clamp(1rem, calc(2rem * var(--font-multiplier) + var(--font-responsivness)), 7rem);
-
-
 }
 
 h2.responsive,
 h2.responsive-heading {
-    font-size: clamp(1.25rem, calc(2rem * var(--font-multiplier) + var(--font-responsivness) * 0.75), 5.5rem);
+    font-size: clamp(1.25rem, calc(2rem * var(--font-multiplier) + var(--font-responsivness) * 0.5), 5.5rem);
 }
 
 h3.responsive,
@@ -879,7 +878,7 @@ select {
 button {
     display: flex;
     align-items: center;
-
+    justify-content: center
 }
 
 button:not(.icon-btn).large,

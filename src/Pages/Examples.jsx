@@ -1,6 +1,15 @@
 import { A } from "@solidjs/router";
 
-function Examples({ language }) {
+function Examples() {
+    // SEO
+    document.title = "BESAMEL | Sections";
+
+    var meta = document.getElementsByTagName("meta");
+    for (var i = 0; i < meta.length; i++) {
+        if (meta[i].name.toLowerCase() == "description") {
+            meta[i].content = "Example of websites, sections and components created with BESAMEL";
+        }
+    }
     return (<div className="sections">
         <div className="header">
             <div className="content">

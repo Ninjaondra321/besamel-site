@@ -3,63 +3,51 @@ import { A } from "@solidjs/router";
 
 
 
-function Cookies() {
-
-    const [showCookies, setShowCookies] = createSignal(false);
-    const [cookiesAllowed, setCookiesAllowed] = createSignal(undefined);
-
-
-    const [prozatimni, setProzatimni] = createSignal(true)
-
-
-    onMount(() => {
-        try {
-            let c = JSON.parse(localStorage.getItem('COOKIES-NOTIME'));
-            if (c["analytical"] === true) {
-                setCookiesAllowed(true);
-            } else if (c["analytical"] === undefined) {
-                setShowCookies(true);
-            }
-        } catch (e) {
-            setShowCookies(true);
-
-        }
-
-    });
-
+function Cookies({ cookiesAllowed, setCookies }) {
 
 
     return (<>
-        <script type="text/javascript">
-            {`
- <script type="text/javascript">
- (function(c,l,a,r,i,t,y){
-     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
- })(window, document, "clarity", "script", "hhtej4ongh");
-</script>
-    `}
 
-        </script>
+        {
+            cookiesAllowed() &&
 
-        {(showCookies() && prozatimni()) &&
+            <script type="text/javascript">
+                {
+                    (function (c, l, a, r, i, t, y) {
+                        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+                        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+                    })(window, document, "clarity", "script", "hhtej4ongh")
+                }
 
+            </script>
+
+        }
+
+        {
+            console.log(cookiesAllowed())
+        }
+
+        {cookiesAllowed() === undefined
+            &&
             <div className="cookies-banner center">
                 <div className="content light padding-medium responsive-rotate">
-
                     <div className="head">
                         <h3>Cookies</h3>
-                        <p>Tato stránka používá soubory cookies. Pokud souhlasíte s používáním souborů cookies, klikněte na tlačítko Povolit. Pokud ne, klikněte na tlačítko Zakázat.
-                            Více informací o souborech cookies naleznete <A href="/cookies">zde</A>.</p>
+
+                        <p>
+                            This website uses cookies. If you agree with the use of cookies, click on the Allow button. If you do not, click on the Disable button. More information about cookies can be found in the <A href="/cookies">cookies page</A>.
+                        </p>
+
                     </div>
                     <div className="center w-1000px m-w-12">
-                        <button className="primary w-12" onclick={() => setProzatimni(false)}>
-                            <span className="g-icon"> done</span>
-                            Povolit </button>
-                        <button className="secondary w-12" onclick={() => setProzatimni(false)}>
-                            <span className="g-icon">close</span>
-                            Zakázat </button>
+                        <button className="primary w-12" onclick={() => setCookies("analytical", true)}>
+                            <span className="icon"> done</span>
+                            Allow </button>
+                        <button className="secondary w-12" onclick={() => setCookies("analytical", false)}>
+                            <span className="icon">close</span>
+                            Disable
+                        </button>
 
 
 
