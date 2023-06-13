@@ -289,6 +289,11 @@ ul.plain {
     .responsive li {
         padding: 2px 0px;
     }
+
+    .tile {
+        margin: 0;
+        padding: 0 !important;
+    }
 }
 
 @media only screen and (min-width: 768px) {

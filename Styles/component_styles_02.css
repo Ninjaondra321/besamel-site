@@ -642,3 +642,16 @@ textarea::-webkit-scrollbar-thumb:hover,
 footer {
     background: linear-gradient(0deg, var(--secondary-color) 0%, var(--secondary-color-muted) 100%);
 }
+
+.display-icon {
+    padding: 0;
+    height: 60px;
+    width: 60px;
+
+    border-radius: var(--border-radius-card);
+
+    /* Center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
