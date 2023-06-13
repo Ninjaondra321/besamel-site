@@ -2,6 +2,30 @@ import { onMount, createSignal, Show, createEffect } from "solid-js";
 import { A } from "@solidjs/router";
 
 
+const cookiesScripts = `
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLHK85G7Q4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XLHK85G7Q4');
+</script>
+
+
+<script type="text/javascript">
+
+    (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "hhtej4ongh")
+
+
+</script>
+
+`
+
 
 function Cookies({ cookiesAllowed, setCookies }) {
 
