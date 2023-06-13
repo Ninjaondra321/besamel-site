@@ -246,11 +246,50 @@ function HomePage() {
             </div>
         </div>
 
+
+        <div className="structure">
+            <div className="content center column">
+                <h2 class="responsive display">Innovative file structure</h2>
+                <div className="responsive-rotate w-12">
+                    <div className="tile w-4 m-w-12">
+                        <p className="icon display-icon"
+                            style="background: #548C2F"
+                        >foundation</p>
+                        <h3>Besamel</h3>
+                        <p>
+                            This file contains layout and basic styles. It's the core of the framework.
+                        </p>
+                    </div>
+                    <div className="tile w-4 m-w-12">
+                        <p className="icon display-icon"
+                            style="background: #B6D6CC"
+                        >draw</p>
+                        <h3>Design</h3>
+                        <p>
+                            Write your design inside this file. For help, check out the <A href="/theme-creator">theme creator</A>.
+                        </p>
+                    </div>
+                    <div className="tile w-4 m-w-12">
+                        <p className="icon display-icon"
+                            style="background: #F68E5F"
+
+
+                        >handyman</p>
+                        <h3>Generated</h3>
+                        <p>
+                            This is a .js file, that generates classes, that would be heavy to load - such as .m-w-200px or .m-h-50vh.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <div className="padding-large"></div>
 
         <div className="features-section">
             <div className="content">
-                <h2 className="responsive">Amazing features</h2>
+                <h2 className="responsive display">Amazing features</h2>
                 <h3>Hover</h3>
 
                 <div className="responsive-rotate">
