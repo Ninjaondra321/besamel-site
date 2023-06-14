@@ -539,14 +539,18 @@ nav {
 }
 
 .navbar .active {
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
 
     /* border-bottom: #f3ef1a 2px solid; */
-    background:
-        /* radial-gradient(circle at 50% 50%, var(--secondary-color) 0%, transparent 80%); */
-        /* Linear gradient from transparent to secondary color and back */
-        linear-gradient(90deg, transparent 0%, var(--secondary-color) 30%, var(--secondary-color) 70%, transparent 100%);
+    /* background: */
+    /* radial-gradient(circle at 50% 50%, var(--secondary-color) 0%, transparent 80%); */
+    /* Linear gradient from transparent to secondary color and back */
+    /* linear-gradient(90deg, transparent 0%, var(--secondary-color) 30%, var(--secondary-color) 70%, transparent 100%); */
+    /* linear-gradient(0deg, transparent 0%, var(--secondary-color) 100%); */
 
+    border-bottom: var(--secondary-color) 3px solid;
+
+    font-weight: 700;
 
 
 
@@ -640,7 +644,10 @@ textarea::-webkit-scrollbar-thumb:hover,
 }
 
 footer {
-    background: linear-gradient(0deg, var(--secondary-color) 0%, var(--secondary-color-muted) 100%);
+    background:
+        linear-gradient(0deg, transparent 0%, var(--primary-color-muted) 100%),
+        linear-gradient(0deg, var(--secondary-color) 0%, var(--secondary-color-muted) 100%);
+
     border-top: 1px solid var(--primary-color);
 }
 

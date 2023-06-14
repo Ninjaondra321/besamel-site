@@ -390,7 +390,8 @@ function Docs() {
                             Last updated: {page().meta.date}
                             <br />
                             {/* TODO! change latest to the actual number */}
-                            Version: {version() === "latest" ? "Latest" : version()}
+                            {console.log(version())}
+                            Version: {["latest", "", undefined].includes(version()) ? "Latest" : version()}
 
                         </p>
                     </>}

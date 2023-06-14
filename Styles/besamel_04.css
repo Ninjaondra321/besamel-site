@@ -1637,3 +1637,11 @@ ul a.active {
 .sidebar .icon {
     text-transform: none;
 }
+
+
+
+/* ! Zarad! */
+hr {
+    height: 1px;
+    width: 100%;
+}
