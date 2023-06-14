@@ -19,14 +19,14 @@ function Examples() {
         </div>
 
         <div className="examples">
-            <div className="content row">
-                <A className="card w-6 m-w-12 column" href="/examples/components">
+            <div className="content responsive-rotate">
+                <A className="card w-6 m-w-11 column" href="/examples/components">
                     <h2>All components</h2>
                     <p>
                         Page featuring all defautl BESAMEL components
                     </p>
                 </A>
-                <A className="card w-6 m-w-12 column" href="/examples/sections">
+                <A className="card w-6 m-w-11 column" href="/examples/sections">
                     <h2>Sections</h2>
                     <p>
                         Showcase of what sections you can create with BESAMEL

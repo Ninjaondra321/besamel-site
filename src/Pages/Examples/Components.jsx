@@ -4,7 +4,7 @@ import { A } from "@solidjs/router";
 
 import { createSignal, onMount } from "solid-js";
 
-import Img_12 from "../../Imgs/pasta.jpg"
+import Img_12 from "../../Imgs/pasta.webp"
 
 import Joiner from "../../Imgs/join.png";
 

@@ -89,15 +89,28 @@ function createRightSidebar(pageJSON) {
     }
 
     console.log(rightSidebar)
+
+
     return rightSidebar;
 }
 
 function Docs() {
-
     const location = useLocation();
 
+    function setSEO(title, description) {
+        document.title = title;
 
-    console.log(location)
+        var meta = document.getElementsByTagName("meta");
+        for (var i = 0; i < meta.length; i++) {
+            if (meta[i].name.toLowerCase() == "description") {
+                meta[i].content = description;
+            }
+        }
+
+    }
+
+    setSEO("BESAMEL | Docs", "Documentation for BESAMEL, awesome CSS framework designed to be responsive, lightweight, customizable and easy to use. It's also open source and free to use!")
+
 
     function hightlightCode() {
         hljs.highlightAll()
@@ -127,6 +140,12 @@ function Docs() {
             setLastUrl(location.pathname)
         }
     })
+
+    createEffect(() => {
+        setSEO(page().meta.title + " | Bešamel", page().meta.description)
+    })
+
+
 
     function changeVersion(version) {
         // The version is in the URL
@@ -390,7 +409,7 @@ function Docs() {
                     </A>
                     <ul>
                         {item.children.map((item) =>
-                            <li><A href={"#" + item.link} innerHTML={item.innerHtml}></A></li>
+                            <li><A href={location.pathname + "#" + item.link} innerHTML={item.innerHtml}></A></li>
                         )}
                     </ul>
 

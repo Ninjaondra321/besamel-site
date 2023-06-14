@@ -57,7 +57,7 @@ function Footer() {
         <footer class="center column ">
             <div className="content">
 
-                <h4>Bešamel</h4>
+                <h4>BEŠAMEL</h4>
                 <p></p>
 
                 <ul className="responsive ">

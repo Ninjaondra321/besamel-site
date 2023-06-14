@@ -17,9 +17,9 @@
     --secondary-color-static: var(--secondary-color);
 
     --font-color-light: #f7fcf1;
-    --font-color-light-muted: #f7fcf1b3;
+    --font-color-light-muted: #f7fcf19c;
     --font-color-dark: #1e1d3a;
-    --font-color-dark-muted: #1e1d3ab3;
+    --font-color-dark-muted: #1e1d3a9a;
 
     --font-color: var(--font-color-dark);
     --font-color-muted: var(--font-color-dark-muted);
@@ -641,6 +641,7 @@ textarea::-webkit-scrollbar-thumb:hover,
 
 footer {
     background: linear-gradient(0deg, var(--secondary-color) 0%, var(--secondary-color-muted) 100%);
+    border-top: 1px solid var(--primary-color);
 }
 
 .display-icon {

@@ -1623,3 +1623,17 @@ ul a.active {
 .sidebar a {
     width: 100%;
 }
+
+
+/* TODO! Někam zařaď! */
+.sidebar * {
+    text-transform: capitalize;
+}
+
+.sidebar ul {
+    margin-top: 0;
+}
+
+.sidebar .icon {
+    text-transform: none;
+}

@@ -117,6 +117,8 @@ function HomePage() {
             </div>
 
 
+
+
             <div className="content center padding-medium">
                 <h1 className="responsive display">BEŠAMEL</h1>
                 <h4 className="responsive display"
@@ -175,7 +177,6 @@ function HomePage() {
             </div>
         </div>
 
-        {/* <div className="padding-large"></div> */}
 
         <div className="comparation-section min-h-500px">
             <style>
@@ -204,7 +205,7 @@ function HomePage() {
             <div className="content  responsive-rotate space-between">
                 <div className="left w-5 m-w-12 ">
                     <h2 class="responsive display">Ultra <u>light</u></h2>
-                    <p class="responsive">The main reason for creating BESAMEL was to make a super lightweight and usable at the same tile css framework.</p>
+                    <p class="responsive">The main reason for creating BESAMEL was to make a super lightweight and usable at the same time css framework.</p>
                 </div>
                 <div className="right w-6 m-w-12 ">
                     <div className="comparation column dark">
@@ -250,32 +251,34 @@ function HomePage() {
         <div className="structure">
             <div className="content center column">
                 <h2 class="responsive display">Innovative file structure</h2>
-                <div className="responsive-rotate w-12">
-                    <div className="tile w-4 m-w-12">
+                <div className="responsive-rotate w-12 ">
+                    <div className="tile w-4 m-w-12 hover">
                         <p className="icon display-icon"
                             style="background: #548C2F"
                         >foundation</p>
-                        <h3>Besamel</h3>
+                        <h3>Besamel<span className="muted hover-show">.css</span></h3>
                         <p>
                             This file contains layout and basic styles. It's the core of the framework.
                         </p>
                     </div>
-                    <div className="tile w-4 m-w-12">
+                    <div className="tile w-4 m-w-12 hover">
                         <p className="icon display-icon"
                             style="background: #B6D6CC"
                         >draw</p>
-                        <h3>Design</h3>
+                        <h3>Design
+                            <span className="muted hover-show">.css</span>
+                        </h3>
                         <p>
                             Write your design inside this file. For help, check out the <A href="/theme-creator">theme creator</A>.
                         </p>
                     </div>
-                    <div className="tile w-4 m-w-12">
+                    <div className="tile w-4 m-w-12 hover">
                         <p className="icon display-icon"
                             style="background: #F68E5F"
 
 
                         >handyman</p>
-                        <h3>Generated</h3>
+                        <h3>Generated<span className="muted hover-show">.js</span></h3>
                         <p>
                             This is a .js file, that generates classes, that would be heavy to load - such as .m-w-200px or .m-h-50vh.
                         </p>

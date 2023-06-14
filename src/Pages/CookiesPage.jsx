@@ -4,7 +4,7 @@ import { createSignal, onMount } from "solid-js";
 
 
 
-function CookiesPage({ analyticalCookiesAllowed, setAnalyticalCookiesAllowed, getCookie }) {
+function CookiesPage({ analyticalCookiesAllowed, setCookies }) {
     document.title = "BESAMEL | Cookies";
 
 
@@ -13,12 +13,9 @@ function CookiesPage({ analyticalCookiesAllowed, setAnalyticalCookiesAllowed, ge
             <div className="cookies-section">
                 <div className="content">
                     <h1>Cookies</h1>
-
                     <br />
 
-                    {/* -checkbox- Technické */}
                     <div className="cookies-checkbox">
-
                         <div className="flex " style=" display: flex ">
 
 
@@ -46,8 +43,16 @@ function CookiesPage({ analyticalCookiesAllowed, setAnalyticalCookiesAllowed, ge
                             Analytical cookies help us improve our website by collecting and reporting information about its use.
                         </p>
                         <p>
-                            3rd party cookies: MS Clarity (find more in <a target="blank" href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-data">their website</a>)
+                            3rd party cookies:
                         </p>
+                        <ul>
+                            <li>
+                                MS Clarity (find more in <a target="blank" href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-data">Clarity cata collection</a>)
+                            </li>
+                            <li>
+                                Google Analytics (find more in <a target="blank" href="https://support.google.com/analytics/answer/11593727?hl=en&sjid=13295105114338360632-EU">Google Analytics data collection</a>)
+                            </li>
+                        </ul>
 
                     </div>
                     <div className="cookies-checkbox">
