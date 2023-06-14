@@ -157,7 +157,7 @@ function HomePage() {
                 <div className="row w-12 responsive-rotate">
                     <div className="left pc-w-6 center">
                         <h2 className="responsive display">Extremely <span></span>
-                            <u>customisible</u>
+                            <u>customizable</u>
 
                         </h2>
                         <p>

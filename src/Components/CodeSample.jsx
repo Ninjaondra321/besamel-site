@@ -12,6 +12,15 @@ function CodeSample({ code, type, language }) { // Type = "code" || "sample" || 
         hljs.highlightAll();
     });
 
+    createEffect(() => {
+        console.log("Code changed");
+        console.log(useThisCode());
+
+    });
+
+
+
+
     return (<>
 
         {
