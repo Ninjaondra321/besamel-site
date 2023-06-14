@@ -20,6 +20,7 @@
     "@solidjs/router": "^0.8.2",
     "prismjs": "^1.29.0",
     "remark-gfm": "^3.0.1",
+    "solid-highlight": "^0.1.12",
     "solid-js": "^1.6.10",
     "solid-jsx": "^0.9.1"
   }
