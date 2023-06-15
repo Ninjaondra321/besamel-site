@@ -1,7 +1,7 @@
 import { createEffect, createResource, onMount, createSignal } from "solid-js";
 
 import Highlight from "solid-highlight";
-import "highlight.js/styles/stackoverflow-light.css";
+import "highlight.js/styles/stackoverflow-dark.css";
 
 
 function CodeSample({ code, type, language }) { // Type = "code" || "sample" || "both"
@@ -30,13 +30,15 @@ function CodeSample({ code, type, language }) { // Type = "code" || "sample" || 
 
 
 
-        <div className="w-12">
-            <Highlight language={language}>
+        <div className="my-code-window hover">
+            <Highlight class="" language={language}>
                 {useThisCode()}
             </Highlight>
-
-            <pre><code contentEditable="true" class={`hljs ${language} language-${language}`}>{useThisCode()}</code>  </pre>
-            {/* <textarea name="" id="asdddd" cols="30" rows="10" value={useThisCode()} onchange={e => updateCode(e.value)} ></textarea> */}
+            <div className="hover-show menu">
+                <button className="icon-btn icon small" onClick={() => navigator.clipboard.writeText(useThisCode())}>
+                    content_copy
+                </button>
+            </div>
         </div>
 
     </>);

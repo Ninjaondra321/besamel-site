@@ -212,7 +212,7 @@ function Docs() {
                     <option value="beta">Beta</option>
                 </select>
 
-                <div class="tooltip">i<div class="tooltip-window bottom"> <p> Více najdete <A href="/versions">zde</A> </p></div></div>
+                <div class="tonpoltip">i<div class="tooltip-window bottom"> <p> Více najdete <A href="/versions">zde</A> </p></div></div>
 
             </div>
 
@@ -324,8 +324,19 @@ function Docs() {
                     </div>
                 } */}
 
+
+
                 {
                     page.state === "ready" && <div className="content padding" id="contentHalloooooo">
+
+                        <ul className="breadcrumb">
+                            <li><A href="/docs">Docs</A></li>
+                            <li><A href="/docs">Components</A></li>
+                            <li><A href="/docs">Accordion</A></li>
+
+                        </ul>
+
+
                         {
                             page().page.map((item) => {
                                 switch (item.type) {
