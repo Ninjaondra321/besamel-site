@@ -143,7 +143,8 @@ ul li {
 .to-nw,
 .to-ne,
 .to-sw,
-.to-se {
+.to-se,
+.to-center {
     position: absolute;
     padding: inherit;
 
@@ -154,6 +155,12 @@ ul li {
     bottom: unset;
     left: unset;
     right: unset;
+}
+
+.to-center {
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .to-w {
@@ -418,6 +425,10 @@ ul.plain {
 /* * 2.8 Text position */
 .txt-l {
     text-align: left;
+}
+
+.txt-c {
+    text-align: center;
 }
 
 .txt-r {
