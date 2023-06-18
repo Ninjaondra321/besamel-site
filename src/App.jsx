@@ -15,9 +15,6 @@ import '../Styles/component_styles_02.css';
 
 
 
-import logo from './logo.svg';
-
-
 //Pages
 // import HomePage from './Pages/Homepage';
 // import NavbarsPage from './Pages/NavbarsPage';
@@ -55,7 +52,6 @@ const cookiesLocation = "COOKIES-BESAMEL-DOCS";
 function App() {
 
   const [analyticalCookiesAllowed, setAnalyticalCookiesAllowed] = createSignal(null);
-
   function setCookies(type, value) {
     let c = JSON.parse(localStorage.getItem(cookiesLocation));
     c[type] = value;
@@ -72,8 +68,6 @@ function App() {
     try {
       let c = JSON.parse(localStorage.getItem(cookiesLocation));
       setAnalyticalCookiesAllowed(c["analytical"]);
-      console.log("Cookies loaded");
-      console.log(c);
     } catch (e) {
       console.log(e);
       localStorage.setItem(cookiesLocation, JSON.stringify({ "analytical": undefined }));

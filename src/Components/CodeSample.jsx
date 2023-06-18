@@ -1,7 +1,7 @@
 import { createEffect, createResource, onMount, createSignal } from "solid-js";
 
 import Highlight from "solid-highlight";
-import "highlight.js/styles/stackoverflow-light.css";
+import "highlight.js/styles/stackoverflow-dark.css";
 
 
 function CodeSample({ code, type, language }) { // Type = "code" || "sample" || "both"

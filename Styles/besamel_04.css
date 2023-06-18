@@ -1645,3 +1645,8 @@ hr {
     height: 1px;
     width: 100%;
 }
+
+.banner p {
+    margin: 0 !important;
+
+}

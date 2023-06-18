@@ -9,7 +9,7 @@ function NavBar() {
     const [showBanner, setShowBanner] = createSignal(true);
     const [drawerShown, setDrawerShown] = createSignal(false);
 
-    function updateHeight(useLessProps = undefined) {
+    function updateHeight() {
         document.documentElement.style.setProperty('--navbar-height', `${document.querySelector("nav").clientHeight - 6}px`);
     }
 
@@ -37,7 +37,10 @@ function NavBar() {
                     <div className="left">
                     </div>
                     <div className="center">
-                        <header>Tahle stránka je zatím v development verzi - nemusí fungovat správně</header>
+                        <p>
+
+                            Tahle stránka je zatím v development verzi - nemusí fungovat správně
+                        </p>
                     </div>
                     <div className="right row">
                         <button className="icon-btn icon small " onClick={() => setShowBanner(false)} >

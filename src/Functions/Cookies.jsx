@@ -9,33 +9,31 @@ function Cookies({ cookiesAllowed, setCookies }) {
         window.dataLayer = window.dataLayer || [];
         gtag('js', new Date())
         gtag('config', 'G-XLHK85G7Q4')
+
+        console.log("Cookies allowed")
+    }
+
+    createEffect(() => {
+        if (cookiesAllowed()) {
+            window.dataLayer = window.dataLayer || [];
+            gtag('js', new Date())
+            gtag('config', 'G-XLHK85G7Q4');
+
+            (function (c, l, a, r, i, t, y) {
+                c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "hhtej4ongh")
+
+        }
+    })
+
+
+    if (cookiesAllowed()) {
+
     }
 
     return (<>
-
-        {
-            cookiesAllowed() &&
-            <>
-
-                <script type="text/javascript">
-                    {
-                        (function (c, l, a, r, i, t, y) {
-                            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-                            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-                            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-                        })(window, document, "clarity", "script", "hhtej4ongh")
-                    }
-
-                </script>
-
-
-
-
-            </ >
-        }
-
-
-
         {
             cookiesAllowed() === undefined
             &&
@@ -43,7 +41,6 @@ function Cookies({ cookiesAllowed, setCookies }) {
                 <div className="content light padding-medium responsive-rotate">
                     <div className="head">
                         <h3>Cookies</h3>
-
                         <p>
                             This website uses cookies. If you agree with the use of cookies, click on the Allow button. If you do not, click on the Disable button. More information about cookies can be found in the <A href="/cookies">cookies page</A>.
                         </p>
@@ -57,13 +54,6 @@ function Cookies({ cookiesAllowed, setCookies }) {
                             <span className="icon">close</span>
                             Disable
                         </button>
-
-
-
-
-
-
-
                     </div>
                 </div>
             </div>
