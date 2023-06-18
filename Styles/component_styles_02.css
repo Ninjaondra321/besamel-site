@@ -630,9 +630,13 @@ textarea::-webkit-scrollbar-thumb:hover,
 
 /* ! Přidělané - pak něco převeď do components_02 v ochutanvac/Styles  - dik ;-) */
 
+.breadcrumb a,
+.breadcrumb a.active,
+
 .sidebar li,
 .sidebar li a {
     color: var(--font-color-dark-muted) !important;
+
 }
 
 .sidebar li a:hover {
@@ -662,4 +666,68 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+@media (max-width: 768px) {
+    .sidebar.left {
+        position: fixed;
+        top: 0;
+        padding-top: var(--navbar-height);
+        background-color: var(--bg-light);
+        z-index: 12;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.left.open {
+        transform: translateX(0);
+    }
+}
+
+
+
+ul.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+
+
+}
+
+.breadcrumb li {
+    list-style: none;
+    /* margin: 0 2px; */
+    padding: 0;
+}
+
+.breadcrumb li:not(:first-child)::before {
+    content: ">";
+    padding: 0 5px;
+}
+
+
+code {
+    border-radius: 20px;
+    max-width: 90vw;
+}
+
+.example-window {
+    max-width: min(100%, 90vw);
+}
+
+.my-code-window .menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    margin: 5px;
+
+
+}
+
+.my-code-window .menu button {
+
+
+    backdrop-filter: blur(10px);
 }

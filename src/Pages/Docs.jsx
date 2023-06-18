@@ -1,6 +1,8 @@
 import { useLocation } from "@solidjs/router";
 import { createEffect, createResource, onMount } from "solid-js";
 
+import updateMeta from "../Functions/MetaManager"
+
 import { createSignal } from "solid-js";
 
 import { A } from "@solidjs/router";
@@ -109,17 +111,18 @@ function Docs() {
 
     }
 
-    setSEO("BESAMEL | Docs", "Documentation for BESAMEL, awesome CSS framework designed to be responsive, lightweight, customizable and easy to use. It's also open source and free to use!")
+    updateMeta({
+        title: "BESAMEL | Docs",
+        description: "Documentation for BESAMEL, awesome CSS framework designed to be responsive, lightweight, customizable and easy to use. It's also open source and free to use!"
+    })
 
 
-    function hightlightCode() {
-        hljs.highlightAll()
-    }
 
 
     const [sidebar, { mutate: ahoj, refetch: refetchSidebar }] = createResource(fetchSidebar)
     const [page, { mutate, refetch }] = createResource(fetchPage)
     const [version, setVersion] = createSignal(undefined)
+    const [sidebarOpened, setSidebarOpened] = createSignal(false)
     const [rightSidebar, setRightSidebar] = createSignal([])
 
     const [lastUrl, setLastUrl] = createSignal(location.pathname)
@@ -142,7 +145,10 @@ function Docs() {
     })
 
     createEffect(() => {
-        setSEO(page().meta.title + " | Bešamel", page().meta.description)
+        updateMeta({
+            title: page().meta.title + " | Bešamel",
+            description: page().meta.description
+        })
     })
 
 
@@ -182,18 +188,13 @@ function Docs() {
     })
 
 
-    createEffect(() => {
-        // console.log(page)
-        console.log(page())
-        hightlightCode()
-    })
 
 
 
 
 
     return (<>
-        <div className="sidebar left nice-scroll  padding-medium scroll">
+        <div className={"sidebar left nice-scroll  padding-medium scroll " + (sidebarOpened() ? "open" : "closed")}>
 
             <div className="row">
                 <label htmlFor="version">Version:</label>
@@ -212,7 +213,7 @@ function Docs() {
                     <option value="beta">Beta</option>
                 </select>
 
-                <div class="tooltip">i<div class="tooltip-window bottom"> <p> Více najdete <A href="/versions">zde</A> </p></div></div>
+                <div class="tonpoltip">i<div class="tooltip-window bottom"> <p> Více najdete <A href="/versions">zde</A> </p></div></div>
 
             </div>
 
@@ -293,11 +294,6 @@ function Docs() {
                         </>
                     )}
 
-                    <script>
-
-                        hljs.highlightAll()
-                        console.log("HelloWOrld");
-                    </script>
 
                 </div>
             }
@@ -324,8 +320,22 @@ function Docs() {
                     </div>
                 } */}
 
+
+
                 {
                     page.state === "ready" && <div className="content padding" id="contentHalloooooo">
+                        <div className="row">
+
+                            <button className="icon-btn secondary pc-hidden" onClick={() => setSidebarOpened(true)} >list</button>
+                            <ul className="breadcrumb">
+                                <li><A href="/docs">Docs</A></li>
+                                <li><A href="/docs">Components</A></li>
+                                <li><A href="/docs">Accordion</A></li>
+
+                            </ul>
+
+                        </div>
+
                         {
                             page().page.map((item) => {
                                 switch (item.type) {

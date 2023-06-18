@@ -241,9 +241,20 @@ function HomePage() {
 
 
         <div className="easy-to-use-section min-h-500px">
-            <div className="content">
-                <h2>EASY TO USE SECTION</h2>
-                <h3>WORK IN PROGRESSSS....</h3>
+            <div className="content pos">
+                <div className="to-center txt-c">
+                    <h2 class=" responsive display" >Easy to use</h2>
+                    <p>Hover thoese element to see it's code</p>
+                </div>
+
+
+                <div className="to-w">
+                    <div className="card">
+                        <h4>Card header</h4>
+                        <p>Card content</p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
